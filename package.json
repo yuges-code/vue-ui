@@ -10,9 +10,21 @@
     "email": "goshasafonov@yandex.ru",
     "github": "https://github.com/goshasafonov"
   },
+  "main": "./dist/ui.js",
+  "module": "./dist/ui.js",
+  "types": "./dist/index.d.ts",
+  "styles": "./dist/ui.css",
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/ui.js",
+      "require": "./dist/ui.js"
+    },
+    "./tooltip.css": "./dist/ui.css"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
