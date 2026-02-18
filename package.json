@@ -1,0 +1,33 @@
+{
+  "name": "@yuges/ui",
+  "description": "A UI Library for Web Apps, powered by Vue.",
+  "private": false,
+  "version": "0.0.0",
+  "type": "module",
+  "author": {
+    "name": "Georgy",
+    "nickname": "goshasafonov",
+    "email": "goshasafonov@yandex.ru",
+    "github": "https://github.com/goshasafonov"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.25"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@vitejs/plugin-vue": "^6.0.2",
+    "@vue/tsconfig": "^0.8.1",
+    "sass": "^1.97.3",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.1",
+    "vue-tsc": "^3.1.5"
+  }
+}
