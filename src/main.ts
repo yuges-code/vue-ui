@@ -1,11 +1,7 @@
-import { createApp, type App } from 'vue';
+import { type App } from 'vue';
 
 import './style.css';
 import './assets/main.scss';
-
-import AppVue from './App.vue'
-
-createApp(AppVue).mount('#app');
 
 import Button from './components/Button/Index.vue';
 
