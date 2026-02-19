@@ -10,20 +10,20 @@
     "email": "goshasafonov@yandex.ru",
     "github": "https://github.com/goshasafonov"
   },
-  "main": "./dist/ui.js",
-  "module": "./dist/ui.js",
+  "main": "./dist/vue-ui.js",
+  "module": "./dist/vue-ui.js",
   "types": "./dist/index.d.ts",
-  "styles": "./dist/ui.css",
+  "styles": "./dist/vue-ui.css",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/ui.js",
-      "require": "./dist/ui.js"
+      "import": "./dist/vue-ui.js",
+      "require": "./dist/vue-ui.js"
     },
-    "./tooltip.css": "./dist/ui.css"
+    "./tooltip.css": "./dist/vue-ui.css"
   },
   "scripts": {
     "dev": "vite",
