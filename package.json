@@ -2,7 +2,7 @@
   "name": "@yuges/vue-ui",
   "description": "A UI Library for Web Apps, powered by Vue.",
   "private": false,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "author": {
     "name": "Georgy",
@@ -27,7 +27,7 @@
       "import": "./dist/vue-ui.js",
       "require": "./dist/vue-ui.umd.cjs"
     },
-    "./tooltip.css": "./dist/vue-ui.css"
+    "./vue-ui.css": "./dist/vue-ui.css"
   },
   "scripts": {
     "dev": "vite",
