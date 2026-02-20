@@ -2,7 +2,7 @@
   "name": "@yuges/vue-ui",
   "description": "A UI Library for Web Apps, powered by Vue.",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "author": {
     "name": "Georgy",
@@ -16,14 +16,14 @@
   },
   "main": "./dist/vue-ui.umd.cjs",
   "module": "./dist/vue-ui.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/types/index.d.ts",
   "styles": "./dist/vue-ui.css",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/vue-ui.js",
       "require": "./dist/vue-ui.umd.cjs"
     },
@@ -44,7 +44,7 @@
     "sass": "^1.97.3",
     "typescript": "~5.9.3",
     "vite": "^7.3.1",
-    "vite-plugin-dts": "^3.7.3",
+    "vite-plugin-dts": "^4.5.4",
     "vue-tsc": "^3.1.5"
   }
 }

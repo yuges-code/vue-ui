@@ -1,6 +1,4 @@
 import { type App } from 'vue';
-
-import './style.css';
 import './assets/main.scss';
 
 import Button from './components/Button/Index.vue';
