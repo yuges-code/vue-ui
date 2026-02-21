@@ -3,11 +3,13 @@ import './assets/main.scss';
 
 import Button from './components/Button/Index.vue';
 
-export default {
+const VueUI = {
     install: (app: App) => {
         app.component('YButton', Button);
     },
 };
+
+export default VueUI;
 
 export {
     Button as YButton,
