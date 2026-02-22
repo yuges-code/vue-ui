@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { ref } from 'vue';
-    import classes from '../../ui/button'
+    import classes from '../../../ui/button';
 
     const props = withDefaults(defineProps<{
         ui?: typeof classes,

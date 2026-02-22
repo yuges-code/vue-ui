@@ -2,7 +2,7 @@
   "name": "@yuges/vue-ui",
   "description": "A UI Library for Web Apps, powered by Vue.",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "author": {
     "name": "Georgy",

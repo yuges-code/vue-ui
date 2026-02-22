@@ -1,16 +1,14 @@
 import { type App } from 'vue';
 import './assets/main.scss';
 
-import Button from './components/Button/Index.vue';
+import * as components from './components';
+import { install } from './helpers/install';
 
 const VueUI = {
-    install: (app: App) => {
-        app.component('YButton', Button);
-    },
+    install: (app: App) => install(app, components),
 };
 
 export default VueUI;
 
-export {
-    Button as YButton,
-};
+export * from './components';
+
