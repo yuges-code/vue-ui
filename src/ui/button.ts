@@ -1,3 +1,5 @@
+import type { ButtonUI } from "../components/Button/src/types/ButtonUI";
+
 export default {
     nodes: {
         root: ['btn', 'position-relative'],
@@ -5,11 +7,11 @@ export default {
     variants: {
         disabled: {
             true: {
-                root: 'disabled',
+                root: ['disabled'],
             },
             false: {
-                root: '',
-            },
+                root: [''],
+            }
         },
     },
-};
+} satisfies ButtonUI;
