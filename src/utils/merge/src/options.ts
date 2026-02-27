@@ -1,8 +1,8 @@
-import type { YMergeOptions } from "./types/YMergeOptions";
+import type { MergeOptions } from "./types/MergeOptions";
 
 export default {
     arrays: {
         unique: false,
         concat: true,
     },
-} satisfies YMergeOptions;
+} satisfies MergeOptions;

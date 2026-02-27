@@ -1,14 +1,14 @@
 import mergeOptions from "./options";
 import { isObject } from "../../isObject";
-import type { YMergeOptions } from "./types/YMergeOptions";
+import type { MergeOptions } from "./types/MergeOptions";
 
-type YObject = Record<string, any>;
+type Object = Record<string, any>;
 
 export function mergeDeep(
-    object: YObject,
-    source: YObject | YObject[],
+    object: Object,
+    source: Object | Object[],
 ) {
-    let sources = source as YObject[];
+    let sources = source as Object[];
 
     if (! Array.isArray(source)) {
         sources = [source];
@@ -35,11 +35,11 @@ export function mergeDeep(
 };
 
 export function mergeDeepWithOptions(
-    object: YObject,
-    source: YObject | YObject[],
-    options?: YMergeOptions,
+    object: Object,
+    source: Object | Object[],
+    options?: MergeOptions,
 ) {
-    let sources = source as YObject[];
+    let sources = source as Object[];
 
     if (! Array.isArray(source)) {
         sources = [source];

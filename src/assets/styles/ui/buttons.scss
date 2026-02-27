@@ -1,0 +1,253 @@
+/*
+ * BUTTONS
+ */
+
+$grid-button-sizes: (
+    4xs: 1rem,
+    3xs: 1.25rem,
+    2xs: 1.5rem,
+    xs: 1.75rem,
+    sm: 2rem,
+    md: 2.25rem,
+    lg: 2.5rem,
+    xl: 2.75rem,
+    2xl: 3rem,
+    3xl: 3.25rem,
+    4xl: 3.5rem,
+);
+
+@each $prefix, $height in $grid-button-sizes {
+    $padding: calc(($height * 0.25) - 0.125rem);
+
+    .btn.btn-#{$prefix} {
+        --y-btn-height: #{$height};
+        --y-btn-padding-y: #{$padding};
+        --y-btn-padding-x: #{$padding * 1.5};
+        --y-btn-icon-height: #{$height - 2 * $padding};
+        --y-btn-font-size: #{1 + $padding - 0.5rem};
+        --y-btn-font-weight: 500;
+    }
+}
+
+.btn {
+    --y-btn-font-size: 0.9rem;
+    --y-btn-font-weight: 400;
+    --y-btn-font-color: inherit;
+
+    --y-btn-padding-y: 0px;
+    --y-btn-padding-x: 12px;
+
+    --y-btn-border-radius: 5px;
+
+    --y-btn-height: 36px;
+    --y-btn-icon-height: 20px;
+}
+
+.btn:focus-visible {
+    outline: none;
+}
+.btn:focus-visible:before {
+    opacity: .15 !important;
+}
+
+.btn * {
+    margin: 0;
+}
+
+.btn {
+    position: relative;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    height: var(--y-btn-height);
+    background-color: transparent;
+    border-radius: var(--y-btn-border-radius);
+    cursor: pointer;
+    text-decoration: none;
+    
+    border: none;
+
+    font-family: inherit;
+    font-size: var(--y-btn-font-size);
+    font-weight: var(--y-btn-font-weight);
+    color: inherit; 
+
+    padding: var(--y-btn-padding-y) var(--y-btn-padding-x);
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.btn svg {
+    height: var(--y-btn-icon-height);
+    width: var(--y-btn-icon-height);
+
+    // min-height: var(--y-btn-icon-height);
+    // min-width: var(--y-btn-icon-height);
+
+    // shape-rendering: crispEdges;
+    shape-rendering: geometricPrecision;
+    transform-origin: 0px 0px;
+}
+
+.btn .spinner-border, .btn .spinner-grow {
+    height: var(--y-btn-icon-height);
+    width: var(--y-btn-icon-height);
+
+    display: none;
+
+    color: gainsboro;
+}
+
+@media (min-resolution: 150dpi) {
+    .btn svg {
+        shape-rendering: auto;
+    }
+}
+
+.btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.btn.btn-icon {
+    overflow: hidden;
+    border-radius: 100%;
+    padding: 0;
+
+    width: var(--y-btn-height);
+    min-width: var(--y-btn-height);
+
+    background-color: transparent;
+    color: var(--y-btn-font-color);
+}
+
+.btn.btn-text {
+    background-color: transparent;
+    color: var(--y-btn-font-color, inherit);
+}
+
+.btn-activated {}
+
+.btn-activated.active:before {
+    opacity: .07;
+}
+.btn-activated.active:hover:before {
+    opacity: .15;
+}
+
+.btn:hover:before
+{
+    opacity: .07;
+}
+.btn::before
+{
+    content: "";
+    z-index: 1;
+    position: absolute;
+    background-color: currentColor;
+    color: inherit;
+    border-radius: inherit;
+    pointer-events: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity .1s cubic-bezier(.4,0,.6,1);
+}
+
+.btn.btn-load > *:not(.spinner-border) {
+    display: none;
+}
+
+.btn.btn-load .spinner-border {
+    display: inline-block;
+}
+
+.btn.btn-load .spinner-grow {
+    display: inline-block;
+}
+
+// .btn.btn-2xl {
+//     --y-btn-height: 48px;
+//     --y-btn-icon-height: 24px;
+
+//     --y-btn-font-size: 1rem;
+//     --y-btn-font-weight: 500;
+// }
+
+// .btn.btn-xl {
+//     --y-btn-height: 44px;
+//     --y-btn-icon-height: 24px;
+
+//     --y-btn-font-size: 1rem;
+//     --y-btn-font-weight: 500;
+// }
+
+// .btn.btn-lg {
+//     --y-btn-height: 40px;
+//     --y-btn-icon-height: 24px;
+
+//     --y-btn-font-size: 0.9rem;
+//     --y-btn-font-weight: 500;
+// }
+
+// .btn.btn-sm {
+//     height: 28px;
+//     min-height: 28px;
+//     --y-btn-height: 28px;
+//     font-size: 0.85rem;
+// }
+
+// .btn.btn-x-sm {
+//     height: 20px;
+//     min-height: 20px;
+//     font-size: 0.75rem;
+// }
+
+.btn.btn-outline {
+    border: 1px solid;
+}
+
+.btn.btn-blue {
+    background-color: rgb(18 167 209);
+    color: white;
+}
+
+.btn.btn-green {
+    background-color: #6fcb8e;
+    color: white;
+}
+
+.btn.btn-orange {
+    background-color: #ffba42;
+    color: white;
+}
+
+.btn.btn-grey {
+    --y-btn-font-color: grey;
+}
+
+.btn-plain {
+    color: inherit;
+    background: transparent;
+    opacity: .62;
+}
+
+.btn.btn-plain:hover {
+    opacity: 1;
+}
+
+.btn.btn-plain:hover:before
+{
+    opacity: 0;
+}
+
+.btn.btn-tonal:before {
+    opacity: .07;
+}
+.btn.btn-tonal:hover:before {
+    opacity: .15;
+}

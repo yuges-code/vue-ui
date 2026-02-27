@@ -1,0 +1,60 @@
+/*
+ * GRIDS
+ */
+
+@use 'sass:math';
+@use '../variables' as *;
+
+$grid-columns: 12 !default;
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row .col-auto {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+@for $i from 0 through $grid-columns {
+    @if $i > 0 {
+        .row .col-#{$i} {
+            box-sizing: border-box;
+            flex: 0 0 auto;
+            width: math.percentage(calc($i / $grid-columns));
+        }
+    } @else {
+        .row .col {
+            box-sizing: border-box;
+            flex: 1 1 0;
+            max-width: 100%;
+        }
+        
+    }
+}
+
+@each $prefix, $width in $grid-media-breakpoints {
+    @media (min-width: $width) {
+        @for $i from 0 through $grid-columns {
+            @if $i > 0 {
+                .row .col-#{$prefix}-#{$i} {
+                    box-sizing: border-box;
+                    flex: 0 0 auto;
+                    width: math.percentage(calc($i / $grid-columns));
+                }
+            } @else {
+                .row .col-#{$prefix} {
+                    box-sizing: border-box;
+                    flex: 1 1 0;
+                    max-width: 100%;
+                }
+                
+            }
+        }
+        .row .col-#{$prefix}-auto {
+            flex: 0 0 auto;
+            width: auto;
+        }
+    }
+}

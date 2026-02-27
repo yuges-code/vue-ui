@@ -1,5 +1,5 @@
 import { type App } from 'vue';
-import './assets/main.scss';
+import './assets/styles/main.scss';
 
 import * as components from './components';
 import { install } from './helpers/install';

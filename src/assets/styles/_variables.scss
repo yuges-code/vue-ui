@@ -1,0 +1,28 @@
+$grid-media-breakpoints: (
+    2xs: 288px,
+    xs: 384px,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    2xl: 1400px,
+    3xl: 1600px,
+    4xl: 1800px,
+    5xl: 2000px,
+);
+
+:root {
+    --y-scrollbar: scroll;
+    --y-scrollbar-width: 16px;
+
+    --y-navbar-height: 60px;
+    --y-navbar-right: 0px;
+    --y-navbar-tabs-height: 120px;
+
+    --y-sidebar-width: 230px;
+    --y-sidebar-mini-width: 72px;
+
+    --y-body-right: 0px;
+
+    --y-bg-opacity: 1;
+}
