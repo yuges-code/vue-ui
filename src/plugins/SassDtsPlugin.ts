@@ -7,7 +7,6 @@ import * as sass from 'sass-embedded';
 import selectorParser from 'postcss-selector-parser';
 import type { RecursivePartial } from '../types/RecursivePartial';
 
-
 type PluginOptions = {
     tab: {
         size: number,
@@ -43,12 +42,8 @@ function makeConfig<T extends RecursivePartial<PluginOptions>>(options: T)
     };
 }
 
-function processing(filename: string, options: PluginOptions)
+function processing(options: PluginOptions)
 {
-    if (! exts.includes(path.extname(filename))) {
-        return;
-    }
-
     const file = {
         source: path.resolve(options.source.directory, options.source.filename),
         output: path.resolve(options.output.directory, options.output.filename),
@@ -105,7 +100,10 @@ export default function SassDtsPlugin(options: RecursivePartial<PluginOptions> =
 
     return {
         name: 'vite-plugin-sass-dts',
-        watchChange: (id: string) => processing(id, config),
+        watchChange: (id: string) => {
+            if (exts.includes(path.extname(id))) { processing(config) }
+        },
+        // buildStart: () => processing(config),
         // transform: (code: string, id: string) => processing(id, config),
     };
 }
