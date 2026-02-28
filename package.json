@@ -2,7 +2,7 @@
   "name": "@yuges/vue-ui",
   "description": "A UI Library for Web Apps, powered by Vue.",
   "private": false,
-  "version": "0.0.6",
+  "version": "0.0.7",
   "type": "module",
   "author": {
     "name": "Georgy",
@@ -41,6 +41,8 @@
     "@types/node": "^24.10.1",
     "@vitejs/plugin-vue": "^6.0.2",
     "@vue/tsconfig": "^0.8.1",
+    "postcss": "^8.5.6",
+    "postcss-selector-parser": "^7.1.1",
     "sass-embedded": "^1.97.3",
     "typescript": "~5.9.3",
     "vite": "^7.3.1",

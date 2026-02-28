@@ -1,7 +1,8 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import dts from 'vite-plugin-dts';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import sassDts from './src/plugins/SassDtsPlugin';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -28,6 +29,11 @@ export default defineConfig({
       outDir: './dist/types',
       insertTypesEntry: true,
       tsconfigPath: './tsconfig.app.json',
-    })
+    }),
+    sassDts({
+      source: {
+        directory: path.resolve(__dirname, './src/assets/styles'),
+      }
+    }),
   ],
 })
