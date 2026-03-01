@@ -60,7 +60,7 @@ export function mergeDeepWithOptions(
                 }
             }
             else if (isObject(objectValue) && isObject(sourceValue)) {
-                object[key] = mergeDeep(objectValue, sourceValue);
+                object[key] = mergeDeepWithOptions(objectValue, sourceValue, options);
             }
             else {
                 object[key] = sourceValue;

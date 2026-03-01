@@ -7,54 +7,64 @@
 
 $grid-columns: 12 !default;
 
+@mixin col($width: 100%) {
+    box-sizing: border-box;
+    width: $width;
+    @if $width == auto{
+        flex: 0 0 auto;
+    } @else if $width == 100%{
+        flex: 1 1 0;
+    } @else {
+        flex: 0 0 auto;
+    }
+}
+
+@mixin make-cols($columns: $grid-columns, $prefix: null) {
+    @for $i from 0 through $columns {
+        @if $i > 0 {
+            @if $prefix {
+                .row .col-#{$prefix}-#{$i} {
+                    @include col(math.percentage(calc($i / $grid-columns)));
+                }
+            } @else {
+                .row .col-#{$i} {
+                    @include col(math.percentage(calc($i / $grid-columns)));
+                }
+            }
+        } @else {
+            @if $prefix {
+                .row .col-#{$prefix} {
+                    @include col(100%);
+                }
+            } @else {
+                .row .col {
+                    @include col(100%);
+                }
+            }
+        }
+    }
+}
+
+@mixin make-cols-breakpoints($columns: $grid-columns, $breakpoints: $grid-media-breakpoints) {
+    @each $prefix, $width in $breakpoints {
+        @media (min-width: $width) {
+            @include make-cols($columns, $prefix);
+
+            .row .col-#{$prefix}-auto {
+                @include col(auto);
+            }
+        }
+    }
+}
+
 .row {
     display: flex;
     flex-wrap: wrap;
 }
 
 .row .col-auto {
-    flex: 0 0 auto;
-    width: auto;
+    @include col(auto);
 }
 
-@for $i from 0 through $grid-columns {
-    @if $i > 0 {
-        .row .col-#{$i} {
-            box-sizing: border-box;
-            flex: 0 0 auto;
-            width: math.percentage(calc($i / $grid-columns));
-        }
-    } @else {
-        .row .col {
-            box-sizing: border-box;
-            flex: 1 1 0;
-            max-width: 100%;
-        }
-        
-    }
-}
-
-@each $prefix, $width in $grid-media-breakpoints {
-    @media (min-width: $width) {
-        @for $i from 0 through $grid-columns {
-            @if $i > 0 {
-                .row .col-#{$prefix}-#{$i} {
-                    box-sizing: border-box;
-                    flex: 0 0 auto;
-                    width: math.percentage(calc($i / $grid-columns));
-                }
-            } @else {
-                .row .col-#{$prefix} {
-                    box-sizing: border-box;
-                    flex: 1 1 0;
-                    max-width: 100%;
-                }
-                
-            }
-        }
-        .row .col-#{$prefix}-auto {
-            flex: 0 0 auto;
-            width: auto;
-        }
-    }
-}
+@include make-cols($grid-columns);
+@include make-cols-breakpoints($grid-columns, $grid-media-breakpoints);
