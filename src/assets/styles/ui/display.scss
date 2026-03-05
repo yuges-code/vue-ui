@@ -1,0 +1,78 @@
+/*
+ * DISPLAY
+ */
+
+@use 'sass:map';
+@use 'sass:math';
+@use "sass:meta";
+@use '../variables' as *;
+
+$display: (
+    variants: (
+        none: (),
+        flex: (
+            inline: true,
+            vendors: (
+                ms: flexbox,
+                webkit: (box, flex)
+            ),
+        ),
+        grid: (
+            inline: true,
+        ),
+        block: (
+            inline: true,
+        ),
+        table: (
+            inline: true,
+        ),
+        inline: (),
+        flexbox: (
+            inline: true,
+            vendors: (
+                ms: flexbox,
+                webkit: (box, flex)
+            ),
+        ),
+        contents: (),
+    ),
+    breakpoints: true,
+);
+
+@mixin vendors($property, $vendors) {
+    @if $property and $vendors {
+        @each $vendor, $values in $vendors {
+            @if meta.type-of($values) == 'list' {
+                @each $value in $values {
+                    #{$property}: -#{$vendor}-#{$value};
+                }
+            } @else if meta.type-of($values) == 'string' {
+                #{$property}: -#{$vendor}-#{$values};
+            }
+        }
+    }
+}
+
+@mixin make-display($display, $options) {
+    @if $display {
+        .d-#{$display} {
+            display: $display;
+            @include vendors(display, map.get($options, vendors));
+        }
+        @if $options and meta.type-of($options) == 'map' {
+            @if map.get($options, inline) {
+                .d-inline-#{$display} {
+                    display: inline-#{$display};
+                }
+            }
+        }
+    }
+}
+
+@mixin make-displays($displays: map.get($display, variants)) {
+    @each $display, $options in $displays {
+        @include make-display($display, $options);
+    }
+}
+
+@include make-displays();
