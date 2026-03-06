@@ -8,30 +8,35 @@ export function mergeDeep(
     object: Object,
     source: Object | Object[],
 ) {
-    let sources = source as Object[];
+    let result = {} as Object;
+    let sources = [] as Object[];
 
-    if (! Array.isArray(source)) {
+    if (Array.isArray(source)) {
+        sources = [...source];
+    } else {
         sources = [source];
     }
 
+    sources.unshift(object);
+
     sources.forEach((source) => {
         for (const key in source) {
-            const objectValue = object[key];
+            const resultValue = result[key];
             const sourceValue = source[key];
 
-            if (Array.isArray(objectValue) && Array.isArray(sourceValue)) {
-                object[key] = objectValue.concat(...sourceValue);
+            if (Array.isArray(resultValue) && Array.isArray(sourceValue)) {
+                result[key] = resultValue.concat(...sourceValue);
             }
-            else if (isObject(objectValue) && isObject(sourceValue)) {
-                object[key] = mergeDeep(objectValue, sourceValue);
+            else if (isObject(resultValue) && isObject(sourceValue)) {
+                result[key] = mergeDeep(resultValue, sourceValue);
             }
             else {
-                object[key] = sourceValue;
+                result[key] = sourceValue;
             }
         }
     });
 
-    return object;
+    return result;
 };
 
 export function mergeDeepWithOptions(
@@ -39,34 +44,39 @@ export function mergeDeepWithOptions(
     source: Object | Object[],
     options?: MergeOptions,
 ) {
-    let sources = source as Object[];
+    let result = {} as Object;
+    let sources = [] as Object[];
 
-    if (! Array.isArray(source)) {
+    if (Array.isArray(source)) {
+        sources = [...source];
+    } else {
         sources = [source];
     }
+
+    sources.unshift(object);
 
     options = mergeDeep(mergeOptions, options || {});
 
     sources.forEach((source) => {
         for (const key in source) {
-            const objectValue = object[key];
+            const resultValue = result[key];
             const sourceValue = source[key];
 
-            if (Array.isArray(objectValue) && Array.isArray(sourceValue)) {
-                object[key] = options?.arrays?.concat ? objectValue.concat(...sourceValue) : sourceValue;
+            if (Array.isArray(resultValue) && Array.isArray(sourceValue)) {
+                result[key] = options?.arrays?.concat ? resultValue.concat(...sourceValue) : sourceValue;
 
                 if (options?.arrays?.unique) {
-                    object[key] = Array.from(new Set(object[key]));
+                    result[key] = Array.from(new Set(result[key]));
                 }
             }
-            else if (isObject(objectValue) && isObject(sourceValue)) {
-                object[key] = mergeDeepWithOptions(objectValue, sourceValue, options);
+            else if (isObject(resultValue) && isObject(sourceValue)) {
+                result[key] = mergeDeepWithOptions(resultValue, sourceValue, options);
             }
             else {
-                object[key] = sourceValue;
+                result[key] = sourceValue;
             }
         }
     });
 
-    return object;
+    return result;
 }

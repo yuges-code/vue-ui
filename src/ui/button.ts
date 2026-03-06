@@ -1,7 +1,7 @@
 import { ClassName } from "../types/ClassName";
 import type { ButtonUI } from "../components/Button/src/types/ButtonUI";
 
-export default {
+const buttonUI = {
     nodes: {
         root: [ClassName['btn'], ClassName["position-relative"]],
     },
@@ -16,3 +16,5 @@ export default {
         },
     },
 } satisfies ButtonUI;
+
+export default buttonUI;

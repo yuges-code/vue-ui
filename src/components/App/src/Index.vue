@@ -6,6 +6,10 @@
     import type { AppEmits } from './types/AppEmits';
     import { mergeDeepWithOptions } from '../../../utils';
 
+    defineOptions({
+        name: 'YApp',
+    });
+
     const props = withDefaults(defineProps<AppProps>(), {
         as: 'div',
         ui: () => appUI,

@@ -3,6 +3,7 @@ export const ClassName = {
     'flex-row-reverse': 'flex-row-reverse',
     'flex-column': 'flex-column',
     'flex-column-reverse': 'flex-column-reverse',
+    'flex-grow': 'flex-grow',
     'flex-wrap': 'flex-wrap',
     'flex-nowrap': 'flex-nowrap',
     'justify-content-start': 'justify-content-start',

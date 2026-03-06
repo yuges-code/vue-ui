@@ -1,7 +1,7 @@
 import { ClassName } from "../types/ClassName";
 import type { AppUI } from "../components/App/src/types/AppUI";
 
-export default {
+const appUI = {
     nodes: {
         root: [ClassName['d-flex'], ClassName['flex-column'], ClassName["position-relative"]],
     },
@@ -16,3 +16,5 @@ export default {
         },
     },
 } satisfies AppUI;
+
+export default appUI;
