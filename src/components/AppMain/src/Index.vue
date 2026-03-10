@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import { computed } from 'vue';
     import appMainUI from '../../../ui/appMain';
+    import { useApp } from '../../../composables/app';
     import type { AppMainUI } from './types/AppMainUI';
     import { mergeDeepWithOptions } from '../../../utils';
     import type { AppMainEmits} from './types/AppMainEmits';
@@ -9,6 +10,9 @@
     defineOptions({
         name: 'YAppMain',
     });
+
+    const app = useApp();
+    const header = app.header;
 
     const props = withDefaults(defineProps<AppMainProps>(), {
         as: 'main',
@@ -24,12 +28,18 @@
 <template>
     <component
         :is="as"
+        @click="(e: PointerEvent) => emits('click', e)"
         :class="[
             ...config.ui.nodes?.root,
+            ...(header ? config.ui.variants?.header?.default?.root : []),
+            ...(header?.$props?.collapsed ? config.ui.variants?.header?.collapsed?.root : []),
         ]"
-        @click="(e: PointerEvent) => emits('click', e)"
+        :style="{
+            '--y-header-height': header?.$props?.height?.default,
+            '--y-header-collapsed-height': header?.$props?.height?.collapsed,
+        }"
     >
-        <section class="min-size-full">
+        <section :class="config.ui.nodes?.section">
             <slot></slot>
         </section>
     </component>

@@ -8,14 +8,15 @@ const appMainUI = {
             ClassName['flex-grow'],
             ClassName['min-size-full'],
         ],
+        section: [ClassName['min-size-full']],
     },
     variants: {
-        collapsed: {
-            true: {
-                root: [],
+        header: {
+            default: {
+                root: [ClassName['with-header']],
             },
-            false: {
-                root: [ClassName['min-w-full']],
+            collapsed: {
+                root: [ClassName['with-header-collapsed']],
             }
         },
     },

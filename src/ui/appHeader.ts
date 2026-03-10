@@ -10,13 +10,14 @@ const appHeaderUI = {
                 ClassName['position-fixed'],
                 ClassName['top-0'],
                 ClassName['start-0'],
+                ClassName['header'],
             ],
         ],
     },
     variants: {
         collapsed: {
             true: {
-                root: [],
+                root: [ClassName['header-collapsed']],
             },
             false: {
                 root: [ClassName['min-w-full']],

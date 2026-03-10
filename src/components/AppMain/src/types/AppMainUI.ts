@@ -3,13 +3,14 @@ import type { ClassName } from "../../../../types/ClassName";
 export interface AppMainUI {
     nodes?: {
         root?: ClassName[],
+        section?: ClassName[],
     },
     variants?: {
-        collapsed?: {
-            true?: {
+        header?: {
+            default?: {
                 root?: ClassName[],
             },
-            false?: {
+            collapsed?: {
                 root?: ClassName[],
             },
         },

@@ -1,0 +1,20 @@
+:root {
+    --y-header-height: 56px;
+    --y-header-collapsed-height: 56px;
+}
+
+.header {
+    height: var(--y-header-height);
+    min-height: var(--y-header-height);
+}
+.header-collapsed {
+    height: var(--y-header-collapsed-height);
+    min-height: var(--y-header-collapsed-height);
+}
+
+.with-header {
+    padding-top: var(--y-header-height);
+}
+.with-header-collapsed {
+    padding-top: var(--y-header-collapsed-height);
+}
