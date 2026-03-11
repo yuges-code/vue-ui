@@ -1,0 +1,27 @@
+:root {
+    --y-aside-left-width: 240px;
+    --y-aside-left-collapsed-width: 72px;
+
+    --y-aside-right-width: 240px;
+    --y-aside-right-collapsed-width: 72px;
+}
+
+$locations: (left, right);
+
+@each $location in $locations {
+    .aside-#{$location} {
+        width: var(--y-aside-#{$location}-width);
+        min-width: var(--y-aside-#{$location}-width);
+    }
+    .aside-#{$location}-collapsed {
+        width: var(--y-aside-#{$location}-collapsed-width);
+        min-width: var(--y-aside-#{$location}-collapsed-width);
+    }
+
+    .with-aside-#{$location} {
+        padding-#{$location}: var(--y-aside-#{$location}-width);
+    }
+    .with-aside-#{$location}-collapsed {
+        padding-#{$location}: var(--y-aside-#{$location}-collapsed-width);
+    }
+}

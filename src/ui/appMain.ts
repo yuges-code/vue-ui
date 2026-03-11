@@ -19,6 +19,28 @@ const appMainUI = {
                 root: [ClassName['with-header-collapsed']],
             }
         },
+        aside: {
+            default: {
+                location: {
+                    left: {
+                        root: [ClassName['with-aside-left']],
+                    },
+                    right: {
+                        root: [ClassName['with-aside-right']],
+                    },
+                },
+            },
+            collapsed: {
+                location: {
+                    left: {
+                        root: [ClassName['with-aside-left-collapsed']],
+                    },
+                    right: {
+                        root: [ClassName['with-aside-right-collapsed']],
+                    },
+                },
+            },
+        },
     },
 } satisfies AppMainUI;
 

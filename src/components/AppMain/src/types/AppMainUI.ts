@@ -14,5 +14,27 @@ export interface AppMainUI {
                 root?: ClassName[],
             },
         },
+        aside?: {
+            default?: {
+                location?: {
+                    left?: {
+                        root?: ClassName[],
+                    },
+                    right?: {
+                        root?: ClassName[],
+                    },
+                },
+            },
+            collapsed?: {
+                location?: {
+                    left?: {
+                        root?: ClassName[],
+                    },
+                    right?: {
+                        root?: ClassName[],
+                    },
+                },
+            },
+        }
     },
 };

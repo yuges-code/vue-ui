@@ -5,12 +5,34 @@ export interface AppAsideUI {
         root?: ClassName[],
     },
     variants?: {
-        collapsed?: {
-            true?: {
+        location?: {
+            left?: {
                 root?: ClassName[],
             },
-            false?: {
+            right?: {
                 root?: ClassName[],
+            },
+        },
+        collapsed?: {
+            true?: {
+                location?: {
+                    left?: {
+                        root?: ClassName[],
+                    },
+                    right?: {
+                        root?: ClassName[],
+                    },
+                },
+            },
+            false?: {
+                location?: {
+                    left?: {
+                        root?: ClassName[],
+                    },
+                    right?: {
+                        root?: ClassName[],
+                    },
+                },
             },
         },
     },

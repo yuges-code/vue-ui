@@ -1,5 +1,7 @@
 <script setup lang="ts">
     import { computed } from 'vue';
+    import { styles } from './styles';
+    import { classes } from './classes';
     import appMainUI from '../../../ui/appMain';
     import { useApp } from '../../../composables/app';
     import type { AppMainUI } from './types/AppMainUI';
@@ -12,6 +14,8 @@
     });
 
     const app = useApp();
+
+    const aside = app.aside;
     const header = app.header;
 
     const props = withDefaults(defineProps<AppMainProps>(), {
@@ -28,16 +32,9 @@
 <template>
     <component
         :is="as"
+        :style="styles(header, aside)"
+        :class="classes(config, header, aside)"
         @click="(e: PointerEvent) => emits('click', e)"
-        :class="[
-            ...config.ui.nodes?.root,
-            ...(header ? config.ui.variants?.header?.default?.root : []),
-            ...(header?.$props?.collapsed ? config.ui.variants?.header?.collapsed?.root : []),
-        ]"
-        :style="{
-            '--y-header-height': header?.$props?.height?.default,
-            '--y-header-collapsed-height': header?.$props?.height?.collapsed,
-        }"
     >
         <section :class="config.ui.nodes?.section">
             <slot></slot>

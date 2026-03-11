@@ -32,7 +32,7 @@
     app.setHeader(getCurrentInstance());
 
     onUnmounted(() => {
-        app.deleteHeader(getCurrentInstance());
+        app.removeHeader(getCurrentInstance());
     });
 </script>
 
