@@ -1,0 +1,20 @@
+/*
+ * Z-INDEX
+ */
+
+@use 'sass:map';
+
+$index: (
+    step: 5,
+    numbers: 20,
+);
+
+@for $i from 0 through map.get($index, numbers) {
+    .z-#{$i * map.get($index, step)} {
+        z-index: #{$i * map.get($index, step)} !important;
+    }
+}
+
+.z-max {
+    z-index: 9999 !important;
+}

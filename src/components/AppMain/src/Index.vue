@@ -6,7 +6,7 @@
     import { useApp } from '../../../composables/app';
     import type { AppMainUI } from './types/AppMainUI';
     import { mergeDeepWithOptions } from '../../../utils';
-    import type { AppMainEmits} from './types/AppMainEmits';
+    import type { AppMainEmits } from './types/AppMainEmits';
     import type { AppMainProps } from './types/AppMainProps';
 
     defineOptions({

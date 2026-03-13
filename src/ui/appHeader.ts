@@ -11,6 +11,7 @@ const appHeaderUI = {
                 ClassName['top-0'],
                 ClassName['start-0'],
                 ClassName['header'],
+                ClassName['z-50'],
             ],
         ],
     },

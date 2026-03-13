@@ -9,6 +9,7 @@ const appAsideUI = {
             ClassName['position-fixed'],
             ClassName['top-0'],
             ClassName['bottom-0'],
+            ClassName['z-40'],
         ],
     },
     variants: {
