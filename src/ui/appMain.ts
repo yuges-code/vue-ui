@@ -1,3 +1,4 @@
+import sectionUI from "./section";
 import { ClassName } from "../types/ClassName";
 import type { AppMainUI } from "../components/AppMain/src/types/AppMainUI";
 
@@ -8,7 +9,10 @@ const appMainUI = {
             ClassName['flex-grow'],
             ClassName['min-size-full'],
         ],
-        section: [ClassName['min-size-full']],
+        section: [
+            ...sectionUI.nodes.root,
+            ClassName['min-size-full']
+        ],
     },
     variants: {
         header: {

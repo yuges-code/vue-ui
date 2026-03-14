@@ -23,10 +23,20 @@
 </script>
 
 <template>
-    <ul
-        :class="[...config.ui.nodes?.root || []]"
+    <component
+        :is="as"
+        :class="[
+            ...(config.ui.nodes?.root || []),
+        ]"
         @click="(e: PointerEvent) => emits('click', e)"
     >
-        <li></li>
-    </ul>
+        <template v-for="list in items">
+            <ul v-if="Array.isArray(list)" class="list-none m-0 p-0">
+                <template v-for="item in list">
+                    <li v-if="! Array.isArray(item)">{{ item.text }}</li>
+                </template>
+            </ul>
+        </template>
+        <!-- <YList></YList> -->
+    </component>
 </template>

@@ -7,6 +7,7 @@ const headerUI = {
             ClassName['d-flex'],
             ClassName['align-items-center'],
             ClassName['justify-content-between'],
+            ClassName['px-4'],
         ],
     },
     variants: {

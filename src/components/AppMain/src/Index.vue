@@ -2,6 +2,7 @@
     import { computed } from 'vue';
     import { styles } from './styles';
     import { classes } from './classes';
+    import { YSection } from '../../Section';
     import appMainUI from '../../../ui/appMain';
     import { useApp } from '../../../composables/app';
     import type { AppMainUI } from './types/AppMainUI';
@@ -36,8 +37,14 @@
         :class="classes(config, header, aside)"
         @click="(e: PointerEvent) => emits('click', e)"
     >
-        <section :class="config.ui.nodes?.section">
+        <YSection
+            :ui="{
+                nodes: {
+                    root: config.ui.nodes?.section,
+                }
+            }"
+        >
             <slot></slot>
-        </section>
+        </YSection>
     </component>
 </template>

@@ -1,0 +1,132 @@
+/*
+ * SPACING
+ */
+
+@use 'sass:math';
+@use '../variables' as *;
+
+$spacingLimit: 20;
+
+.m-auto {
+    margin: auto!important;
+}
+.my-auto {
+    margin-top: auto!important;
+    margin-bottom: auto!important;
+}
+.mx-auto {
+    margin-right: auto!important;
+    margin-left: auto!important;
+}
+
+/*
+ * Margins
+ */
+@for $i from 0 through $spacingLimit {
+    .m-#{$i} {margin: 0.25rem * $i !important;}
+    .mt-#{$i} {margin-top: 0.25rem * $i !important;}
+    .mb-#{$i} {margin-bottom: 0.25rem * $i !important;}
+    .ms-#{$i} {margin-left: 0.25rem * $i !important;}
+    .me-#{$i} {margin-right: 0.25rem * $i !important;}
+    .my-#{$i} {
+        margin-top: 0.25rem * $i !important;
+        margin-bottom: 0.25rem * $i !important;
+    }
+    .my-#{$i}\.5 {
+        margin-top: (0.25rem * $i) + math.div(0.25, 2) !important;
+        margin-bottom: (0.25rem * $i) + math.div(0.25, 2) !important;
+    }
+
+    .mx-#{$i} {
+        margin-left: 0.25rem * $i !important;
+        margin-right: 0.25rem * $i !important;
+    }
+    .mx-n#{$i} {
+        margin-left: -0.25rem * $i !important;
+        margin-right: -0.25rem * $i !important;
+    }
+
+    .mb-n#{$i} {
+        margin-bottom: -0.25rem * $i !important;
+    }
+
+    .ms-n#{$i} {
+        margin-left: -0.25rem * $i !important;
+    }
+
+    .gap-#{$i} {gap: 0.25rem * $i !important;}
+    .gap-#{$i}\.5 {gap: (0.25rem * $i) + math.div(0.25, 2) !important;}
+
+    .row-gap-#{$i} {row-gap: 0.25rem * $i !important;}
+    .row-gap-#{$i}\.5 {row-gap: (0.25rem * $i) + math.div(0.25, 2) !important;}
+
+    .column-gap-#{$i} {column-gap: 0.25rem * $i !important;}
+    .column-gap-#{$i}\.5 {column-gap: (0.25rem * $i) + math.div(0.25, 2) !important;}
+}
+
+/*
+ * Paddings
+ */
+@for $i from 0 through $spacingLimit {
+    .p-#{$i} {padding: 0.25rem * $i !important;}
+    .pt-#{$i} {padding-top: 0.25rem * $i !important;}
+    .pb-#{$i} {padding-bottom: 0.25rem * $i !important;}
+    .ps-#{$i} {padding-left: 0.25rem * $i !important;}
+    .pe-#{$i} {padding-right: 0.25rem * $i !important;}
+    .py-#{$i} {
+        padding-top: 0.25rem * $i !important;
+        padding-bottom: 0.25rem * $i !important;
+    }
+    .py-#{$i}\.5 {
+        padding-top: (0.25rem * $i) + math.div(0.25, 2) !important;
+        padding-bottom: (0.25rem * $i) + math.div(0.25, 2) !important;
+    }
+    .px-#{$i} {
+        padding-left: 0.25rem * $i !important;
+        padding-right: 0.25rem * $i !important;
+    }
+    .px-#{$i}\.5 {
+        padding-left: (0.25rem * $i) + math.div(0.25, 2) !important;
+        padding-right: (0.25rem * $i) + math.div(0.25, 2) !important;
+    }
+}
+
+@each $prefix, $width in $grid-media-breakpoints {
+    @media (min-width: $width) {
+        @for $i from 0 through $spacingLimit {
+            .p-#{$prefix}-#{$i} {padding: 0.25rem * $i !important;}
+            .pt-#{$prefix}-#{$i} {padding-top: 0.25rem * $i !important;}
+            .pb-#{$prefix}-#{$i} {padding-bottom: 0.25rem * $i !important;}
+            .ps-#{$prefix}-#{$i} {padding-left: 0.25rem * $i !important;}
+            .pe-#{$prefix}-#{$i} {padding-right: 0.25rem * $i !important;}
+            .py-#{$prefix}-#{$i} {
+                padding-top: 0.25rem * $i !important;
+                padding-bottom: 0.25rem * $i !important;
+            }
+            .px-#{$prefix}-#{$i} {
+                padding-left: 0.25rem * $i !important;
+                padding-right: 0.25rem * $i !important;
+            }
+        }
+    }
+}
+
+@each $prefix, $width in $grid-media-breakpoints {
+    @media (min-width: $width) {
+        @for $i from 0 through $spacingLimit {
+            .m-#{$prefix}-#{$i} {margin: 0.25rem * $i !important;}
+            .mt-#{$prefix}-#{$i} {margin-top: 0.25rem * $i !important;}
+            .mb-#{$prefix}-#{$i} {margin-bottom: 0.25rem * $i !important;}
+            .ms-#{$prefix}-#{$i} {margin-left: 0.25rem * $i !important;}
+            .me-#{$prefix}-#{$i} {margin-right: 0.25rem * $i !important;}
+            .my-#{$prefix}-#{$i} {
+                margin-top: 0.25rem * $i !important;
+                margin-bottom: 0.25rem * $i !important;
+            }
+            .mx-#{$prefix}-#{$i} {
+                margin-left: 0.25rem * $i !important;
+                margin-right: 0.25rem * $i !important;
+            }
+        }
+    }
+}

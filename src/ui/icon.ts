@@ -3,7 +3,7 @@ import type { IconUI } from "../components/Icon/src/types/IconUI";
 
 const iconUI = {
     nodes: {
-        root: [ClassName['d-flex']],
+        root: [ClassName['d-inline-flex']],
     },
 } satisfies IconUI;
 
