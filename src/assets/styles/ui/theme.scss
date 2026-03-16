@@ -1,0 +1,16 @@
+.theme-dark {
+    --y-default-bg-color: #121214;
+    --y-default-text-color: #ffffff;
+}
+
+.theme-light {
+    --y-default-bg-color: #ffffff;
+    --y-default-text-color: #000000;
+}
+
+.bg-default {
+    background-color: var(--y-default-bg-color);
+}
+.text-default {
+    color: var(--y-default-text-color);
+}

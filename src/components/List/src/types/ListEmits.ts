@@ -1,3 +1,3 @@
-export interface NavigationEmits {
+export interface ListEmits {
     click: [event: PointerEvent],
 };

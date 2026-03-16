@@ -1,8 +1,10 @@
 <script setup lang="ts">
     import { computed } from 'vue';
+    import { YList } from '../../List';
     import navigationUI from '../../../ui/navigation';
     import { mergeDeepWithOptions } from '../../../utils';
     import type { NavigationUI } from './types/NavigationUI';
+    import type { NavigationItem } from './types/NavigationItem';
     import type { NavigationEmits } from './types/NavigationEmits';
     import type { NavigationProps } from './types/NavigationProps';
 
@@ -20,6 +22,13 @@
     const config = computed(() => ({
         ui: mergeDeepWithOptions(navigationUI, props.ui, { arrays: { unique: true, concat: false } }) as NavigationUI,
     }));
+
+    const group = computed(() => 
+        props.items &&
+        Array.isArray(props.items) &&
+        props.items[0] &&
+        Array.isArray(props.items[0])
+    );
 </script>
 
 <template>
@@ -30,13 +39,21 @@
         ]"
         @click="(e: PointerEvent) => emits('click', e)"
     >
-        <template v-for="list in items">
-            <ul v-if="Array.isArray(list)" class="list-none m-0 p-0">
-                <template v-for="item in list">
-                    <li v-if="! Array.isArray(item)">{{ item.text }}</li>
-                </template>
-            </ul>
+        <template v-if="group" v-for="list in items">
+            <YList
+                class="m-0"
+                marker="none"
+                :items="list"
+                v-if="Array.isArray(list)"
+            ></YList>
         </template>
-        <!-- <YList></YList> -->
+        <template v-else>
+            <YList
+                class="m-0"
+                marker="none"
+                :items="(items as NavigationItem[])"
+                v-if="Array.isArray(items)"
+            ></YList>
+        </template>
     </component>
 </template>

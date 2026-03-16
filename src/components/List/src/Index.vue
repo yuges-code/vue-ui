@@ -1,32 +1,74 @@
 <script setup lang="ts">
+    import YList from './Index.vue';
     import { computed } from 'vue';
-    import navigationUI from '../../../ui/navigation';
+    import listUI from '../../../ui/list';
+    import type { ListUI } from './types/ListUI';
+    import type { ListProps } from './types/ListProps';
+    import type { ListEmits } from './types/ListEmits';
     import { mergeDeepWithOptions } from '../../../utils';
-    import type { NavigationUI } from './types/NavigationUI';
-    import type { NavigationEmits } from './types/NavigationEmits';
-    import type { NavigationProps } from './types/NavigationProps';
 
     defineOptions({
-        name: 'YNavigation',
+        name: 'YList',
     });
 
-    const props = withDefaults(defineProps<NavigationProps>(), {
-        as: 'nav',
-        ui: () => navigationUI,
+    const props = withDefaults(defineProps<ListProps>(), {
+        ui: () => listUI,
         items: () => [],
+        type: 'unordered',
+        indentation: true,
     });
-    const emits = defineEmits<NavigationEmits>();
+    const emits = defineEmits<ListEmits>();
 
     const config = computed(() => ({
-        ui: mergeDeepWithOptions(navigationUI, props.ui, { arrays: { unique: true, concat: false } }) as NavigationUI,
+        ui: mergeDeepWithOptions(listUI, props.ui, { arrays: { unique: true, concat: false } }) as ListUI,
     }));
+
+    const as = computed(() => {
+        if (props.as) {
+            return props.as;
+        }
+
+        return props.type === 'ordered' ? 'ol' : 'ul';
+    });
+
+    const marker = computed(() => {
+        if (props.marker) {
+            return props.marker;
+        }
+
+        return props.type === 'ordered' ? 'decimal' : 'disc';
+    });
 </script>
 
 <template>
-    <ul
-        :class="[...config.ui.nodes?.root || []]"
+    <component
+        :is="as"
+        :class="[
+            ...(config.ui.nodes?.root || []),
+            ...(
+                config.ui.variants?.indentation
+                    ? config.ui.variants.indentation[indentation ? 'true' : 'false']?.root || []
+                    : []
+            ),
+            ...(
+                config.ui.variants?.marker
+                    ? config.ui.variants.marker[marker]?.root || []
+                    : []
+            ),
+        ]"
         @click="(e: PointerEvent) => emits('click', e)"
     >
-        <li></li>
-    </ul>
+        <li v-for="item in items">
+            {{ item.text }}
+            <YList
+                :as="as"
+                :ui="ui"
+                :type="type"
+                :marker="marker"
+                :items="item.items"
+                :indentation="indentation"
+                v-if="item.items && Array.isArray(item.items) && item.items.length"
+            ></YList>
+        </li>
+    </component>
 </template>

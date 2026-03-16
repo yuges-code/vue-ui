@@ -1,3 +1,4 @@
+import './scripts/theme.ts';
 import { type App } from 'vue';
 import './assets/styles/main.scss';
 
@@ -13,6 +14,6 @@ const VueUI = {
 export default VueUI;
 
 export * from './utils';
-export * from './components';
-
 export * from './icons';
+export * from './components';
+export * from './composables';

@@ -3,7 +3,12 @@ import type { NavigationUI } from "../components/Navigation/src/types/Navigation
 
 const navigationUI = {
     nodes: {
-        root: [ClassName['d-flex'], ClassName['justify-content-center'], ClassName['align-items-center']],
+        root: [
+            ClassName['d-flex'],
+            ClassName['flex-column'],
+            ClassName['align-items-center'],
+            ClassName['justify-content-center'],
+        ],
     },
 } satisfies NavigationUI;
 

@@ -5,10 +5,13 @@
     import type { AppProps } from './types/AppProps';
     import type { AppEmits } from './types/AppEmits';
     import { mergeDeepWithOptions } from '../../../utils';
+    // import { useTheme } from '../../../composables/theme';
 
     defineOptions({
         name: 'YApp',
     });
+
+    // const theme = useTheme();
 
     const props = withDefaults(defineProps<AppProps>(), {
         as: 'div',

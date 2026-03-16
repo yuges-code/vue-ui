@@ -3,7 +3,13 @@ import type { AppUI } from "../components/App/src/types/AppUI";
 
 const appUI = {
     nodes: {
-        root: [ClassName['d-flex'], ClassName['flex-column'], ClassName["position-relative"]],
+        root: [
+            ClassName['d-flex'],
+            ClassName['flex-column'],
+            ClassName["position-relative"],
+            ClassName["bg-default"],
+            ClassName["text-default"],
+        ],
     },
     variants: {
         mode: {
