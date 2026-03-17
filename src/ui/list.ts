@@ -19,10 +19,10 @@ const listUI = {
         },
         indentation: {
             true: {
-                root: [ClassName['ps-4']],
+                root: [ClassName['pl-4']],
             },
             false: {
-                root: [ClassName['ps-0']],
+                root: [ClassName['pl-0']],
             },
         },
     },

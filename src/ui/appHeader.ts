@@ -9,7 +9,7 @@ const appHeaderUI = {
             ...[
                 ClassName['position-fixed'],
                 ClassName['top-0'],
-                ClassName['start-0'],
+                ClassName['left-0'],
                 ClassName['header'],
                 ClassName['z-50'],
             ],

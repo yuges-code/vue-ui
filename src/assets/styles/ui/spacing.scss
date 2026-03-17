@@ -26,8 +26,8 @@ $spacingLimit: 20;
     .m-#{$i} {margin: 0.25rem * $i !important;}
     .mt-#{$i} {margin-top: 0.25rem * $i !important;}
     .mb-#{$i} {margin-bottom: 0.25rem * $i !important;}
-    .ms-#{$i} {margin-left: 0.25rem * $i !important;}
-    .me-#{$i} {margin-right: 0.25rem * $i !important;}
+    .ml-#{$i} {margin-left: 0.25rem * $i !important;}
+    .mr-#{$i} {margin-right: 0.25rem * $i !important;}
     .my-#{$i} {
         margin-top: 0.25rem * $i !important;
         margin-bottom: 0.25rem * $i !important;
@@ -50,7 +50,7 @@ $spacingLimit: 20;
         margin-bottom: -0.25rem * $i !important;
     }
 
-    .ms-n#{$i} {
+    .ml-n#{$i} {
         margin-left: -0.25rem * $i !important;
     }
 
@@ -71,8 +71,8 @@ $spacingLimit: 20;
     .p-#{$i} {padding: 0.25rem * $i !important;}
     .pt-#{$i} {padding-top: 0.25rem * $i !important;}
     .pb-#{$i} {padding-bottom: 0.25rem * $i !important;}
-    .ps-#{$i} {padding-left: 0.25rem * $i !important;}
-    .pe-#{$i} {padding-right: 0.25rem * $i !important;}
+    .pl-#{$i} {padding-left: 0.25rem * $i !important;}
+    .pr-#{$i} {padding-right: 0.25rem * $i !important;}
     .py-#{$i} {
         padding-top: 0.25rem * $i !important;
         padding-bottom: 0.25rem * $i !important;
@@ -97,8 +97,8 @@ $spacingLimit: 20;
             .p-#{$prefix}-#{$i} {padding: 0.25rem * $i !important;}
             .pt-#{$prefix}-#{$i} {padding-top: 0.25rem * $i !important;}
             .pb-#{$prefix}-#{$i} {padding-bottom: 0.25rem * $i !important;}
-            .ps-#{$prefix}-#{$i} {padding-left: 0.25rem * $i !important;}
-            .pe-#{$prefix}-#{$i} {padding-right: 0.25rem * $i !important;}
+            .pl-#{$prefix}-#{$i} {padding-left: 0.25rem * $i !important;}
+            .pr-#{$prefix}-#{$i} {padding-right: 0.25rem * $i !important;}
             .py-#{$prefix}-#{$i} {
                 padding-top: 0.25rem * $i !important;
                 padding-bottom: 0.25rem * $i !important;
@@ -117,8 +117,8 @@ $spacingLimit: 20;
             .m-#{$prefix}-#{$i} {margin: 0.25rem * $i !important;}
             .mt-#{$prefix}-#{$i} {margin-top: 0.25rem * $i !important;}
             .mb-#{$prefix}-#{$i} {margin-bottom: 0.25rem * $i !important;}
-            .ms-#{$prefix}-#{$i} {margin-left: 0.25rem * $i !important;}
-            .me-#{$prefix}-#{$i} {margin-right: 0.25rem * $i !important;}
+            .ml-#{$prefix}-#{$i} {margin-left: 0.25rem * $i !important;}
+            .mr-#{$prefix}-#{$i} {margin-right: 0.25rem * $i !important;}
             .my-#{$prefix}-#{$i} {
                 margin-top: 0.25rem * $i !important;
                 margin-bottom: 0.25rem * $i !important;

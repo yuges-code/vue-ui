@@ -15,10 +15,10 @@ const appAsideUI = {
     variants: {
         location: {
             left: {
-                root: [ClassName['start-0'], ClassName['aside-left']],
+                root: [ClassName['left-0'], ClassName['aside-left']],
             },
             right: {
-                root: [ClassName['end-0'], ClassName['aside-right']],
+                root: [ClassName['right-0'], ClassName['aside-right']],
             },
         },
         collapsed: {

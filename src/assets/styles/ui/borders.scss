@@ -1,0 +1,89 @@
+/*
+ * BORDERS
+ */
+
+@use 'sass:math';
+
+$bordersLimit: 15;
+
+.border {
+    border: 1px solid black;
+}
+
+.border-dashed {
+    border-style: dashed !important;
+    border-top-style: dashed !important;
+    border-right-style: dashed !important;
+    border-bottom-style: dashed !important;
+    border-left-style: dashed !important;
+}
+
+.border-none {
+    border: none !important;
+}
+
+.border-0 {
+    border: 0 !important;
+}
+.border-t-0 {
+    border-top-width: 0;
+}
+.border-r-0 {
+    border-right-width: 0;
+}
+.border-b-0 {
+    border-bottom-width: 0;
+}
+.border-l-0 {
+    border-left-width: 0;
+}
+
+.border-1 {
+    border-width: 1px !important;
+}
+.border-t-1 {
+    border-top-width: 1px;
+}
+
+.border-2 {
+    border-width: 2px !important;
+}
+.border-3 {
+    border-width: 3px !important;
+}
+.border-4 {
+    border-width: 4px !important;
+}
+
+.border-white {
+    border-color: white !important;
+}
+.border-black {
+    border-color: black !important;
+}
+.border-transparent {
+    border-color: transparent !important;
+}
+.border-lightgray {
+    border-color: lightgray !important;
+}
+
+.rounded-0 {
+    border-radius: 0 !important;
+}
+
+.rounded-circle {
+    border-radius: 100% !important;
+}
+
+.rounded-pill {
+    border-radius: 50rem !important;
+}
+
+/*
+ * Margins
+ */
+@for $i from 0 through $bordersLimit {
+    .rounded-#{$i} {border-radius: 0.25rem * $i !important;}
+    .rounded-#{$i}\.5 {border-radius: (0.25rem * $i) + math.div(0.25, 2) !important;}
+}
