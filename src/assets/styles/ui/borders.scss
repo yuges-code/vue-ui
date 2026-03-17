@@ -10,12 +10,17 @@ $bordersLimit: 15;
     border: 1px solid black;
 }
 
+.border-solid {
+    border-style: solid;
+}
 .border-dashed {
-    border-style: dashed !important;
-    border-top-style: dashed !important;
-    border-right-style: dashed !important;
-    border-bottom-style: dashed !important;
-    border-left-style: dashed !important;
+    border-style: dashed;
+}
+.border-dotted {
+    border-style: dotted;
+}
+.border-double {
+    border-style: double;
 }
 
 .border-none {
@@ -43,6 +48,9 @@ $bordersLimit: 15;
 }
 .border-t-1 {
     border-top-width: 1px;
+}
+.border-l-1 {
+    border-left-width: 1px;
 }
 
 .border-2 {

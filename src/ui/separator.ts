@@ -6,17 +6,52 @@ const separatorUI = {
         root: [ClassName['d-flex'], ClassName['align-items-center']],
         border: [
             ClassName['d-flex'],
-            ClassName['w-full'],
-            ClassName['border-t-1'],
-            ClassName['border-r-0'],
-            ClassName['border-b-0'],
-            ClassName['border-l-0'],
             ClassName['m-0'],
         ],
     },
     slots: {
-        default: [ClassName['mx-3']],
-    }
+        default: [ClassName['d-flex']],
+    },
+    variants: {
+        type: {
+            solid: {
+                border: [ClassName['border-solid']],
+            },
+            dotted: {
+                border: [ClassName['border-dotted']],
+            },
+            dashed: {
+                border: [ClassName['border-dashed']],
+            },
+            double: {
+                border: [ClassName['border-double']],
+            },
+        },
+        orientation: {
+            vertical: {
+                root: [ClassName['flex-column']],
+                border: [
+                    ClassName['h-full'],
+                    ClassName['border-t-0'],
+                    ClassName['border-r-0'],
+                    ClassName['border-b-0'],
+                    ClassName['border-l-1'],
+                ],
+                default: [ClassName['my-3']],
+            },
+            horizontal: {
+                root: [ClassName['flex-row']],
+                border: [
+                    ClassName['w-full'],
+                    ClassName['border-t-1'],
+                    ClassName['border-r-0'],
+                    ClassName['border-b-0'],
+                    ClassName['border-l-0'],
+                ],
+                default: [ClassName['mx-3']],
+            },
+        },
+    },
 } satisfies SeparatorUI;
 
 export default separatorUI;

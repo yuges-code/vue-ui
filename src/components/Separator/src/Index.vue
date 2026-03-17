@@ -12,7 +12,9 @@
 
     const props = withDefaults(defineProps<SeparatorProps>(), {
         as: 'div',
+        type: 'solid',
         ui: () => separatorUI,
+        orientation: 'horizontal',
     });
     const emits = defineEmits<SeparatorEmits>();
 
@@ -26,25 +28,31 @@
         :is="as"
         :class="[
             ...(config.ui.nodes?.root || []),
+            ...(config.ui.variants?.orientation?.[orientation]?.root || [])
         ]"
         @click="(e: PointerEvent) => emits('click', e)"
     >
         <hr
             :class="[
-                ...(config.ui.nodes?.border || [])
+                ...(config.ui.nodes?.border || []),
+                ...(config.ui.variants?.type?.[type]?.border || []),
+                ...(config.ui.variants?.orientation?.[orientation]?.border || []),
             ]"
         >
         <template v-if="$slots.default">
             <div
                 :class="[
-                ...(config.ui.slots?.default || []),
+                    ...(config.ui.slots?.default || []),
+                    ...(config.ui.variants?.orientation?.[orientation]?.default || []),
                 ]"
             >
                 <slot></slot>
             </div>
             <hr
                 :class="[
-                    ...(config.ui.nodes?.border || [])
+                    ...(config.ui.nodes?.border || []),
+                    ...(config.ui.variants?.type?.[type]?.border || []),
+                    ...(config.ui.variants?.orientation?.[orientation]?.border || []),
                 ]"
             >
         </template>
