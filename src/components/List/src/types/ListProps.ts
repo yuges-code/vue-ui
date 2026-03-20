@@ -8,6 +8,7 @@ export type ListMarkerType = 'disc' | 'decimal' | 'none';
 export interface ListProps extends Props {
     ui?: ListUI,
     type?: ListType,
+    child?: boolean,
     items?: ListItems,
     indentation?: boolean,
     marker?: ListMarkerType,

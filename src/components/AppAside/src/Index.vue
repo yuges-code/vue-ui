@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import { styles } from './styles';
     import { classes } from './classes';
+    import { YSection } from '../../Section';
     import appAsideUI from '../../../ui/appAside';
     import { useApp } from '../../../composables/app';
     import type { AppAsideUI } from './types/AppAsideUI';
@@ -45,6 +46,14 @@
         :class="classes(config, location, collapsed)"
         @click="(e: PointerEvent) => emits('click', e)"
     >
-        <slot></slot>
+        <YSection
+            :ui="{
+                nodes: {
+                    root: config.ui.nodes?.section,
+                }
+            }"
+        >
+            <slot></slot>
+        </YSection>
     </component>
 </template>

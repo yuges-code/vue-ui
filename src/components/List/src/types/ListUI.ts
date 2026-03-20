@@ -1,29 +1,38 @@
 import type { ClassName } from "../../../../types/ClassName";
 
-export type ListType = ''
-
 export interface ListUI {
     nodes?: {
         root?: ClassName[],
+        item?: ClassName[],
+        child?: {
+            root?: ClassName[],
+            item?: ClassName[],
+        },
     },
     variants?: {
         marker?: {
             disc?: {
-                root: ClassName[],
+                root?: ClassName[],
             },
             decimal?: {
-                root: ClassName[],
+                root?: ClassName[],
             },
             none?: {
-                root: ClassName[],
+                root?: ClassName[],
             },
         },
         indentation?: {
             true?: {
-                root: ClassName[],
+                root?: ClassName[],
+                child?: {
+                    root?: ClassName[],
+                },
             },
             false?: {
-                root: ClassName[],
+                root?: ClassName[],
+                child?: {
+                    root?: ClassName[],
+                },
             },
         },
     },

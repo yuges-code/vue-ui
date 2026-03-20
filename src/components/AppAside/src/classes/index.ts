@@ -6,6 +6,7 @@ export function classes(config: {ui: AppAsideUI}, location: AsideLocation, colla
     return [
         ...(config.ui.nodes?.root || []),
         ...(config.ui.variants?.location?.[location]?.root || []),
+        ...(config.ui.variants?.collapsed?.[collapsed ? 'true' : 'false']?.root || []),
         ...(config.ui.variants?.collapsed?.[collapsed ? 'true' : 'false']?.location?.[location]?.root || []),
     ];
 }

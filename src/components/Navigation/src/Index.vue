@@ -1,12 +1,15 @@
 <script setup lang="ts">
     import { computed } from 'vue';
     import { YList } from '../../List';
+    import { YButton } from '../../Button';
+    import { YSeparator } from '../../Separator';
     import navigationUI from '../../../ui/navigation';
     import { mergeDeepWithOptions } from '../../../utils';
     import type { NavigationUI } from './types/NavigationUI';
     import type { NavigationItem } from './types/NavigationItem';
     import type { NavigationEmits } from './types/NavigationEmits';
     import type { NavigationProps } from './types/NavigationProps';
+    import type { ListItems } from '../../List/src/types/ListItems';
 
     defineOptions({
         name: 'YNavigation',
@@ -16,6 +19,7 @@
         as: 'nav',
         ui: () => navigationUI,
         items: () => [],
+        orientation: 'horizontal',
     });
     const emits = defineEmits<NavigationEmits>();
 
@@ -29,6 +33,25 @@
         props.items[0] &&
         Array.isArray(props.items[0])
     );
+
+    function prepare(items: NavigationItem[])
+    {
+        let data = [] as ListItems;
+
+        items.forEach((value) => {
+            data.push({
+                ...value,
+                ...{
+                    component:
+                    {
+                        as: YButton,
+                    }
+                },
+            });
+        });
+
+        return data
+    }
 </script>
 
 <template>
@@ -39,17 +62,18 @@
         ]"
         @click="(e: PointerEvent) => emits('click', e)"
     >
-        <template v-if="group" v-for="list in items">
+        <template v-if="group" v-for="list, index in items">
+            <YSeparator v-if="index" class="w-full" :orientation="orientation"></YSeparator>
             <YList
-                class="m-0"
+                class="m-0 w-full"
                 marker="none"
-                :items="list"
+                :items="prepare(list)"
                 v-if="Array.isArray(list)"
             ></YList>
         </template>
         <template v-else>
             <YList
-                class="m-0"
+                class="m-0 w-full"
                 marker="none"
                 :items="(items as NavigationItem[])"
                 v-if="Array.isArray(items)"

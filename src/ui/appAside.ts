@@ -11,6 +11,12 @@ const appAsideUI = {
             ClassName['bottom-0'],
             ClassName['z-40'],
         ],
+        section: [
+            ClassName['d-flex'],
+            ClassName['flex-column'],
+            ClassName['min-size-full'],
+            ClassName['pl-3'],
+        ],
     },
     variants: {
         location: {
@@ -23,6 +29,7 @@ const appAsideUI = {
         },
         collapsed: {
             true: {
+                root: [],
                 location: {
                     left: {
                         root: [ClassName['aside-left-collapsed']],
@@ -33,6 +40,7 @@ const appAsideUI = {
                 },
             },
             false: {
+                root: [],
                 location: {},
             },
         },

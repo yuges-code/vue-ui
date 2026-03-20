@@ -3,6 +3,7 @@ import type { ClassName } from "../../../../types/ClassName";
 export interface AppAsideUI {
     nodes?: {
         root?: ClassName[],
+        section?: ClassName[],
     },
     variants?: {
         location?: {
@@ -15,6 +16,7 @@ export interface AppAsideUI {
         },
         collapsed?: {
             true?: {
+                root?: ClassName[],
                 location?: {
                     left?: {
                         root?: ClassName[],
@@ -25,6 +27,7 @@ export interface AppAsideUI {
                 },
             },
             false?: {
+                root?: ClassName[],
                 location?: {
                     left?: {
                         root?: ClassName[],

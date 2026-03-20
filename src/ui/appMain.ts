@@ -11,7 +11,6 @@ const appMainUI = {
         ],
         section: [
             ...sectionUI.nodes.root,
-            ClassName['min-size-full']
         ],
     },
     variants: {

@@ -6,6 +6,7 @@ export * from './Button';
 export * from './Section';
 export * from './AppMain';
 export * from './AppAside';
+export * from './ListItem';
 export * from './AppHeader';
 export * from './Separator';
 export * from './Navigation';

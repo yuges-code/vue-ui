@@ -2,6 +2,7 @@
     import YList from './Index.vue';
     import { computed } from 'vue';
     import listUI from '../../../ui/list';
+    import { YListItem } from '../../ListItem';
     import type { ListUI } from './types/ListUI';
     import type { ListProps } from './types/ListProps';
     import type { ListEmits } from './types/ListEmits';
@@ -12,8 +13,9 @@
     });
 
     const props = withDefaults(defineProps<ListProps>(), {
-        ui: () => listUI,
+        child: false,
         items: () => [],
+        ui: () => listUI,
         type: 'unordered',
         indentation: true,
     });
@@ -44,31 +46,46 @@
     <component
         :is="as"
         :class="[
-            ...(config.ui.nodes?.root || []),
-            ...(
-                config.ui.variants?.indentation
-                    ? config.ui.variants.indentation[indentation ? 'true' : 'false']?.root || []
-                    : []
-            ),
-            ...(
-                config.ui.variants?.marker
-                    ? config.ui.variants.marker[marker]?.root || []
-                    : []
-            ),
+            ...(!child
+                    ? config.ui.nodes?.root || []
+                    : config.ui.nodes?.child?.root || []
+                ),
+            ...(config.ui.variants?.marker?.[marker]?.root || []),
+            ...(!child
+                    ? config.ui.variants?.indentation?.[indentation ? 'true' : 'false']?.root || []
+                    : config.ui.variants?.indentation?.[indentation ? 'true' : 'false']?.child?.root || []
+                ),
         ]"
         @click="(e: PointerEvent) => emits('click', e)"
     >
-        <li v-for="item in items">
-            {{ item.text }}
+        <YListItem
+            :as="'li'"
+            :child="child"
+            v-for="item in items"
+        >
+            <component
+                :is="item.component?.as"
+                v-if="item.component?.as"
+                v-bind="item.component?.bind"
+            >
+                {{ item.text }}
+            </component>
+            <template v-else>
+                {{ item.text }}
+            </template>
+
             <YList
                 :as="as"
                 :ui="ui"
                 :type="type"
+                :child="true"
                 :marker="marker"
                 :items="item.items"
                 :indentation="indentation"
                 v-if="item.items && Array.isArray(item.items) && item.items.length"
             ></YList>
-        </li>
+        </YListItem>
+
+        <slot></slot>
     </component>
 </template>
