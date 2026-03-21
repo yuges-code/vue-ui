@@ -1,15 +1,23 @@
 <script setup lang="ts">
-    import { computed } from 'vue';
     import appUI from '../../../ui/app';
     import type { AppUI } from './types/AppUI';
     import type { AppProps } from './types/AppProps';
     import type { AppEmits } from './types/AppEmits';
+    import { computed, getCurrentInstance } from 'vue';
     import { mergeDeepWithOptions } from '../../../utils';
     // import { useTheme } from '../../../composables/theme';
+
+    const instance = getCurrentInstance();
 
     defineOptions({
         name: 'YApp',
     });
+
+    const router = instance?.proxy?.$router;
+
+    if (router) {
+
+    }
 
     // const theme = useTheme();
 

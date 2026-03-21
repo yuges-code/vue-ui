@@ -43,6 +43,9 @@
   "peerDependenciesMeta": {
     "typescript": {
       "optional": true
+    },
+    "vue-router": {
+      "optional": true
     }
   },
   "devDependencies": {
