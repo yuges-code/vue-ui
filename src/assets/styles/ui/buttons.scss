@@ -24,6 +24,7 @@ $grid-button-sizes: (
         --y-btn-padding-y: #{$padding};
         --y-btn-padding-x: #{$padding * 1.5};
         --y-btn-icon-height: #{$height - 2 * $padding};
+        --y-btn-line-height: #{$height - 2 * $padding};
         --y-btn-font-size: #{1 + $padding - 0.5rem};
         --y-btn-font-weight: 500;
     }
@@ -61,7 +62,7 @@ $grid-button-sizes: (
     justify-content: center;
     align-items: center;
 
-    height: var(--y-btn-height);
+    // height: var(--y-btn-height);
     background-color: transparent;
     border-radius: var(--y-btn-border-radius);
     cursor: pointer;
@@ -72,6 +73,7 @@ $grid-button-sizes: (
     font-family: inherit;
     font-size: var(--y-btn-font-size);
     font-weight: var(--y-btn-font-weight);
+    line-height: var(--y-btn-line-height);
     color: inherit; 
 
     padding: var(--y-btn-padding-y) var(--y-btn-padding-x);
@@ -116,10 +118,8 @@ $grid-button-sizes: (
 .btn.btn-icon {
     overflow: hidden;
     border-radius: 100%;
-    padding: 0;
 
-    width: var(--y-btn-height);
-    min-width: var(--y-btn-height);
+    padding: var(--y-btn-padding-y);
 
     background-color: transparent;
     color: var(--y-btn-font-color);

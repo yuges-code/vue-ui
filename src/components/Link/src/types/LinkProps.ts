@@ -7,9 +7,9 @@ export interface LinkProps extends Props {
     disabled?: boolean,
     external?: boolean;
     activeClass?: string,
-    exactActiveClass?: string,
     to?: RouteLocationRaw,
     href?: LinkProps['to'];
+    exactActiveClass?: string,
     target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null;
     rel?: 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | (string & {}) | null;
 };

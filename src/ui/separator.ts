@@ -6,7 +6,6 @@ const separatorUI = {
         root: [ClassName['d-flex'], ClassName['align-items-center']],
         border: [
             ClassName['d-flex'],
-            ClassName['m-0'],
         ],
     },
     slots: {
@@ -32,9 +31,6 @@ const separatorUI = {
                 root: [ClassName['flex-column']],
                 border: [
                     ClassName['h-full'],
-                    ClassName['border-t-0'],
-                    ClassName['border-r-0'],
-                    ClassName['border-b-0'],
                     ClassName['border-l-1'],
                 ],
                 default: [ClassName['my-3']],
@@ -44,9 +40,6 @@ const separatorUI = {
                 border: [
                     ClassName['w-full'],
                     ClassName['border-t-1'],
-                    ClassName['border-r-0'],
-                    ClassName['border-b-0'],
-                    ClassName['border-l-0'],
                 ],
                 default: [ClassName['mx-3']],
             },

@@ -13,5 +13,21 @@ export interface ButtonUI {
                 root?: ClassName[],
             },
         },
+        orientation?: {
+            vertical?: {
+                root?: ClassName[],
+            },
+            horizontal?: {
+                root?: ClassName[],
+            },
+        },
+        square?: {
+            true?: {
+                root?: ClassName[],
+            },
+            false?: {
+                root?: ClassName[],
+            },
+        }
     },
 };

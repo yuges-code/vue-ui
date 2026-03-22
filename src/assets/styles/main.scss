@@ -14,11 +14,9 @@
 @use './ui/borders.scss';
 @use './ui/position.scss';
 
-body {
+*,:after,:before,::backdrop {
+    box-sizing: border-box;
+    border: 0 solid;
     margin: 0;
-    display: block;
-};
-
-* {
-    box-sizing: border-box; 
+    padding: 0
 }

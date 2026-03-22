@@ -14,6 +14,22 @@ const buttonUI = {
                 root: [],
             }
         },
+        orientation: {
+            vertical: {
+                root: [ClassName['flex-column']],
+            },
+            horizontal: {
+                root: [ClassName['flex-row']],
+            },
+        },
+        square: {
+            true: {
+                root: [ClassName['btn-icon']],
+            },
+            false: {
+                root: [],
+            },
+        }
     },
 } satisfies ButtonUI;
 
