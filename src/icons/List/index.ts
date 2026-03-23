@@ -1,0 +1,1 @@
+export { default as IconList } from './src/Index.vue';
