@@ -1,5 +1,5 @@
 import type { ButtonUI } from "../types/ButtonUI";
-import type { ButtonOrientation } from "../types/ButtonProps";
+import type { ButtonOrientation } from "../types/ButtonOrientation";
 
 export function classes(
     config: {ui: ButtonUI},

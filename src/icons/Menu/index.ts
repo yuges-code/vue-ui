@@ -1,1 +1,0 @@
-export { default as IconMenu } from './src/Index.vue';

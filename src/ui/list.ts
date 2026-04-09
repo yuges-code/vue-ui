@@ -1,9 +1,11 @@
+import listItemUI from "./listItem";
 import { ClassName } from "../types/ClassName";
 import type { ListUI } from "../components/List/src/types/ListUI";
 
 const listUI = {
     nodes: {
         root: [ClassName['d-flex'], ClassName['flex-column']],
+        item: [...listItemUI.nodes.root]
     },
     variants: {
         marker: {

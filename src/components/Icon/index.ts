@@ -1,3 +1,1 @@
-import Icon from './src/Index.vue';
-
-export { Icon as YIcon};
+export { default as YIcon } from './src/Index.vue';

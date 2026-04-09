@@ -5,10 +5,21 @@ const navigationUI = {
     nodes: {
         root: [
             ClassName['d-flex'],
-            ClassName['flex-column'],
             ClassName['align-items-center'],
-            ClassName['justify-content-center'],
         ],
+        separator: [],
+    },
+    variants: {
+        orientation: {
+            vertical: {
+                root: [ClassName['flex-row'], ClassName['justify-content-center']],
+                separator: [],
+            },
+            horizontal: {
+                root: [ClassName['flex-column']],
+                separator: [],
+            },
+        }
     },
 } satisfies NavigationUI;
 

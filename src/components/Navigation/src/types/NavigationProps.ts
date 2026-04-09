@@ -6,6 +6,7 @@ export type NavigationOrientation = 'horizontal' | 'vertical';
 
 export interface NavigationProps extends Props {
     ui?: NavigationUI,
+    collapsed?: boolean,
     items?: NavigationItems,
     orientation?: NavigationOrientation,
 };

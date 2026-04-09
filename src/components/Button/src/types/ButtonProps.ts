@@ -1,9 +1,9 @@
 import type { ButtonUI } from "./ButtonUI";
+import type { ButtonType } from "./ButtonType";
 import type { RouteLocationRaw } from "vue-router";
 import type { Props } from "../../../../types/Props";
-
-export type ButtonType = 'button' | 'reset' | 'submit';
-export type ButtonOrientation = 'horizontal' | 'vertical';
+import type { ButtonOrientation } from "./ButtonOrientation";
+import type { IconProps } from "../../../Icon/src/types/IconProps";
 
 export interface ButtonProps extends Props {
     ui?: ButtonUI,
@@ -12,8 +12,8 @@ export interface ButtonProps extends Props {
     disabled?: boolean,
     to?: RouteLocationRaw,
     icon?: {
-        append?: string,
-        prepend?: string,
-    } | string,
+        append?: IconProps['name'],
+        prepend?: IconProps['name'],
+    } | IconProps['name'],
     orientation?: ButtonOrientation,
 };

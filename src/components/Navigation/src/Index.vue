@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import { computed } from 'vue';
     import { YList } from '../../List';
+    import listUI from '../../../ui/list';
     import { YButton } from '../../Button';
     import { YSeparator } from '../../Separator';
     import navigationUI from '../../../ui/navigation';
@@ -10,6 +11,7 @@
     import type { NavigationEmits } from './types/NavigationEmits';
     import type { NavigationProps } from './types/NavigationProps';
     import type { ListItems } from '../../List/src/types/ListItems';
+    import { ButtonOrientation } from '../../Button/src/types/ButtonOrientation';
 
     defineOptions({
         name: 'YNavigation',
@@ -19,6 +21,7 @@
         as: 'nav',
         ui: () => navigationUI,
         items: () => [],
+        collapsed: false,
         orientation: 'horizontal',
     });
     const emits = defineEmits<NavigationEmits>();
@@ -45,6 +48,10 @@
                     component:
                     {
                         as: YButton,
+                        bind: {
+                            icon: value.icon,
+                            orientation: props.collapsed ? ButtonOrientation.Vertical : ButtonOrientation.Horizontal,
+                        }
                     }
                 },
             });
@@ -59,13 +66,23 @@
         :is="as"
         :class="[
             ...(config.ui.nodes?.root || []),
+            ...(config.ui.variants?.orientation?.[orientation]?.root || [])
         ]"
         @click="(e: PointerEvent) => emits('click', e)"
     >
         <template v-if="group" v-for="list, index in items">
-            <YSeparator v-if="index" class="w-full" :orientation="orientation"></YSeparator>
+            <YSeparator
+                v-if="index"
+                class="w-full"
+                :orientation="orientation"
+            ></YSeparator>
             <YList
-                class="m-0 w-full"
+                :ui="{
+                    nodes: {
+                        root: [ ...listUI.nodes.root, 'gap-2' ],
+                    },
+                }"
+                class="w-full"
                 marker="none"
                 :items="prepare(list)"
                 v-if="Array.isArray(list)"
@@ -73,7 +90,7 @@
         </template>
         <template v-else>
             <YList
-                class="m-0 w-full"
+                class="w-full"
                 marker="none"
                 :items="(items as NavigationItem[])"
                 v-if="Array.isArray(items)"
