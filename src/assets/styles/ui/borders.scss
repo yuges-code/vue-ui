@@ -4,6 +4,17 @@
 
 @use 'sass:math';
 
+$sizes: (
+    xs: 0.125rem,
+    sm: 0.25rem,
+    md: 0.375rem,
+    lg: 0.5rem,
+    xl: 0.625rem,
+    2xl: 0.75rem,
+    3xl: 0.875rem,
+    4xl: 1rem,
+);
+
 $bordersLimit: 15;
 
 .border {
@@ -75,6 +86,9 @@ $bordersLimit: 15;
 .border-lightgray {
     border-color: lightgray !important;
 }
+.border-gray {
+    border-color: gray !important;
+}
 
 .rounded-0 {
     border-radius: 0 !important;
@@ -94,4 +108,10 @@ $bordersLimit: 15;
 @for $i from 0 through $bordersLimit {
     .rounded-#{$i} {border-radius: 0.25rem * $i !important;}
     .rounded-#{$i}\.5 {border-radius: (0.25rem * $i) + math.div(0.25, 2) !important;}
+}
+
+@each $prefix, $size in $sizes {
+    .rounded-#{$prefix} {
+        border-radius: $size;
+    }
 }

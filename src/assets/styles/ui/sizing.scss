@@ -1,4 +1,11 @@
+/*
+ * SIZING
+ */
+
+@use 'sass:math';
 @use '../variables' as *;
+
+$sizes: 10 !default;
 
 .w-full {
     width: 100%;
@@ -32,4 +39,15 @@
 .min-size-screen {
     min-width: 100vw;
     min-height: 100vh;
+}
+
+@for $i from 1 through $sizes {
+    .size-#{$i} {
+        width: 0.25rem * $i;
+        height: 0.25rem * $i;
+    }
+    .size-#{$i}\.5 {
+        width: (0.25rem * $i) + math.div(0.25, 2) !important;
+        height: (0.25rem * $i) + math.div(0.25, 2) !important;
+    }
 }

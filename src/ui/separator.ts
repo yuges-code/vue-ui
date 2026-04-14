@@ -5,7 +5,7 @@ const separatorUI = {
     nodes: {
         root: [ClassName['d-flex'], ClassName['align-items-center']],
         border: [
-            ClassName['d-flex'],
+            ClassName['d-flex'], ClassName['border-gray'],
         ],
     },
     slots: {

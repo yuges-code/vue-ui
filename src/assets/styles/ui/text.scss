@@ -1,19 +1,26 @@
+/*
+ * TEXT
+ */
+
+@use 'sass:map';
+@use 'sass:math';
+
 $grid-text-sizes: (
-    5xs: .25rem,
-    4xs: .375rem,
-    3xs: .5rem,
-    2xs: .625rem,
-    xs: .75rem,
-    sm: .875rem,
-    md: 1rem,
-    lg: 1.125rem,
-    xl: 1.25rem,
-    2xl: 1.375rem,
-    3xl: 1.5rem,
-    4xl: 1.625rem,
-    5xl: 1.75rem,
-    6xl: 1.875rem,
-    7xl: 2rem,
+    5xs: (font: 0.625rem, line: 0.75rem),
+    4xs: (font: 0.6875rem, line: 0.875rem),
+    3xs: (font: 0.75rem, line: 1rem),
+    2xs: (font: 0.8125rem, line: 1.125rem),
+    xs: (font: 0.875rem, line: 1.25rem),
+    sm: (font: 0.9375rem, line: 1.375rem),
+    md: (font: 1rem, line: 1.5rem),
+    lg: (font: 1.125rem, line: 1.625rem),
+    xl: (font: 1.25rem, line: 1.75rem),
+    2xl: (font: 1.375rem, line: 1.875rem),
+    3xl: (font: 1.5rem, line: 2rem),
+    4xl: (font: 1.625rem, line: 2.125rem),
+    5xl: (font: 1.75rem, line: 2.25rem),
+    6xl: (font: 1.875rem, line: 2.375rem),
+    7xl: (font: 2rem, line: 2.5rem),
 );
 
 $sizes: 10 !default;
@@ -21,8 +28,8 @@ $weights: 9 !default;
 
 @each $prefix, $size in $grid-text-sizes {
     .text-#{$prefix} {
-        font-size: $size;
-        line-height: calc(($size + 0.5rem) / $size);
+        font-size: map.get($size, font);
+        line-height: map.get($size, line);
     }
 }
 
@@ -36,4 +43,17 @@ $weights: 9 !default;
     .fw-#{$weight * 100} {
         font-weight: $weight * 100;
     }
+}
+
+.text-inherit {
+    color: inherit;
+}
+.text-initial {
+    color: initial;
+}
+.text-current {
+    color: currentColor;
+}
+.text-transparent {
+    color: transparent;
 }

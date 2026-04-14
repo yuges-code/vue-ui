@@ -1,33 +1,25 @@
 import type { ClassName } from "../../../../types/ClassName";
+import type { ButtonOrientation } from "./ButtonOrientation";
+import type { ButtonRounded } from "./ButtonRounded";
+import type { ButtonSize } from "./ButtonSize";
+
+interface Nodes {
+    root?: ClassName[],
+    icon?: {
+        append?: ClassName[],
+        prepend?: ClassName[],
+    },
+};
+
+type BooleanAsString = 'true' | 'false';
 
 export interface ButtonUI {
-    nodes?: {
-        root?: ClassName[],
-    },
+    nodes?: Nodes,
     variants?: {
-        disabled?: {
-            true?: {
-                root?: ClassName[],
-            },
-            false?: {
-                root?: ClassName[],
-            },
-        },
-        orientation?: {
-            vertical?: {
-                root?: ClassName[],
-            },
-            horizontal?: {
-                root?: ClassName[],
-            },
-        },
-        square?: {
-            true?: {
-                root?: ClassName[],
-            },
-            false?: {
-                root?: ClassName[],
-            },
-        }
+        size?: { [key in ButtonSize]?: Nodes & { square?: { [key in BooleanAsString]?: Nodes } } },
+        rounded?: { [key in ButtonRounded]?: Nodes },
+        square?: { [key in BooleanAsString]?: Nodes },
+        disabled?: { [key in BooleanAsString]?: Nodes },
+        orientation?: { [key in ButtonOrientation]?: Nodes },
     },
 };

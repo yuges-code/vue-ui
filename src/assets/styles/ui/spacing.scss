@@ -73,21 +73,39 @@ $spacingLimit: 20;
     .pb-#{$i} {padding-bottom: 0.25rem * $i !important;}
     .pl-#{$i} {padding-left: 0.25rem * $i !important;}
     .pr-#{$i} {padding-right: 0.25rem * $i !important;}
+
     .py-#{$i} {
         padding-top: 0.25rem * $i !important;
         padding-bottom: 0.25rem * $i !important;
+    }
+    .py-#{$i}\.25 {
+        padding-top: (0.25rem * $i) + math.div(0.25, 4) !important;
+        padding-bottom: (0.25rem * $i) + math.div(0.25, 4) !important;
     }
     .py-#{$i}\.5 {
         padding-top: (0.25rem * $i) + math.div(0.25, 2) !important;
         padding-bottom: (0.25rem * $i) + math.div(0.25, 2) !important;
     }
+    .py-#{$i}\.75 {
+        padding-top: (0.25rem * $i) + math.div(0.25, 2) + math.div(0.25, 4) !important;
+        padding-bottom: (0.25rem * $i) + math.div(0.25, 2) + math.div(0.25, 4) !important;
+    }
+
     .px-#{$i} {
         padding-left: 0.25rem * $i !important;
         padding-right: 0.25rem * $i !important;
     }
+    .px-#{$i}\.25 {
+        padding-left: (0.25rem * $i) + math.div(0.25, 4) !important;
+        padding-right: (0.25rem * $i) + math.div(0.25, 4) !important;
+    }
     .px-#{$i}\.5 {
         padding-left: (0.25rem * $i) + math.div(0.25, 2) !important;
         padding-right: (0.25rem * $i) + math.div(0.25, 2) !important;
+    }
+    .px-#{$i}\.75 {
+        padding-left: (0.25rem * $i) + math.div(0.25, 2) + math.div(0.25, 4) !important;
+        padding-right: (0.25rem * $i) + math.div(0.25, 2) + math.div(0.25, 4) !important;
     }
 }
 
