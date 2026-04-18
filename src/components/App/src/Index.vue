@@ -1,10 +1,12 @@
 <script setup lang="ts">
-    import appUI from '../../../ui/app';
+    import { variants } from './variants';
+    import { appUI } from '../../../ui/app';
     import type { AppUI } from './types/AppUI';
     import type { AppProps } from './types/AppProps';
+    import type { AppSlots } from './types/AppSlots';
     import type { AppEmits } from './types/AppEmits';
     import { computed, getCurrentInstance } from 'vue';
-    import { mergeDeepWithOptions } from '../../../utils';
+    import { mergeDeepWithOptions, ui } from '../../../utils';
     // import { useTheme } from '../../../composables/theme';
 
     const instance = getCurrentInstance();
@@ -27,20 +29,25 @@
         mode: 'fullscreen',
     });
     const emits = defineEmits<AppEmits>();
+    const slots = defineSlots<AppSlots>();
 
     const config = computed(() => ({
         ui: mergeDeepWithOptions(appUI, props.ui, { arrays: { unique: true, concat: false } }) as AppUI,
     }));
+
+    const yv = ui(
+        config.value.ui.nodes,
+        config.value.ui.slots,
+        config.value.ui.variants,
+        config.value.ui.combinations,
+    );
 </script>
 
 <template>
     <component
-        :is="props.as"
-        :class="[
-            ...config.ui.nodes?.root,
-            ...(config.ui.variants?.mode ? config.ui.variants.mode[mode]?.root : []),
-        ]"
+        :is="as"
         @click="(e: PointerEvent) => emits('click', e)"
+        :class="yv.nodes?.root?.( variants(props, slots) )"
     >
         <slot></slot>
     </component>

@@ -3,7 +3,14 @@ import type { ButtonRounded } from "./ButtonRounded";
 import type { ClassName } from "../../../../types/ClassName";
 import type { ButtonOrientation } from "./ButtonOrientation";
 import type { BooleanAsString } from "../../../../types/BooleanAsString";
-import type { UICombinations, UINodes, UINodesClear, UISlots, UISlotsClear, UIVariants } from "../../../../utils/ui/src/types/UIOptions";
+import type {
+    UINodes,
+    UISlots,
+    UIVariants,
+    UINodesClear,
+    UISlotsClear,
+    UICombinations,
+} from "../../../../utils/ui/src/types/UIOptions";
 
 interface Nodes extends UINodes {
     root?: ClassName[],

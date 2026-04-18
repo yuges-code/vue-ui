@@ -1,12 +1,17 @@
 <script setup lang="ts">
-    import { YIcon } from '../../Icon';
     import { computed } from 'vue';
-    import buttonUI from '../../../ui/button';
+    import { YIcon } from '../../Icon';
+    import { variants } from './variants';
+    import { buttonUI } from '../../../ui/button';
     import type { ButtonUI } from './types/ButtonUI';
-    import { mergeDeepWithOptions, ui } from '../../../utils';
     import type { ButtonProps } from './types/ButtonProps';
-    import type { ButtonEmits } from './types/ButtonEmits';
     import type { ButtonSlots } from './types/ButtonSlots';
+    import type { ButtonEmits } from './types/ButtonEmits';
+    import { mergeDeepWithOptions, ui } from '../../../utils';
+
+    defineOptions({
+        name: 'YButton',
+    });
 
     const props = withDefaults(defineProps<ButtonProps>(), {
         as: 'button',
@@ -25,20 +30,6 @@
         ui: mergeDeepWithOptions(buttonUI, props.ui, { arrays: { unique: true, concat: false } }) as ButtonUI,
     }));
 
-    function isSquare(props: ButtonProps, slots: ButtonSlots): boolean
-    {
-        if (props.square === undefined) {
-            return slots && !slots.default &&
-                (
-                    typeof props.icon === 'string' ||
-                    typeof props.icon === 'object' && !!props.icon.prepend && !props.icon.append ||
-                    typeof props.icon === 'object' && !!props.icon.append && !props.icon.prepend
-                );
-        } else {
-            return Boolean(props.square);
-        }
-    }
-
     const yv = ui(
         config.value.ui.nodes,
         config.value.ui.slots,
@@ -51,16 +42,16 @@
     <component
         :is="as"
         :type="type"
-        :class="yv.nodes?.root?.( {size: size, square: isSquare(props, slots) ? 'true' : 'false', rounded: rounded, orientation: orientation} )"
-        @click="(e: PointerEvent) => emits('click', e)"
         :disabled = disabled
+        @click="(e: PointerEvent) => emits('click', e)"
+        :class="yv.nodes?.root?.( variants(props, slots) )"
     >
         <YIcon
             v-if="
                 (typeof icon === 'string' ) ||
                 (typeof icon === 'object' && icon.prepend)
             "
-            :class="yv.nodes?.icon?.prepend?.( {size: size} )"
+            :class="yv.nodes?.icon?.prepend?.( variants(props, slots) )"
             :name="typeof icon === 'string' ? icon : icon.prepend"
         />
         <div v-if="slots.default">
@@ -69,7 +60,7 @@
         <YIcon
             v-if="typeof icon === 'object' && icon.append"
             :name="icon.append"
-            :class="yv.nodes?.icon?.append?.( {size: size} )"
+            :class="yv.nodes?.icon?.append?.( variants(props, slots) )"
         />
     </component>
 </template>

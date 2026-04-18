@@ -1,3 +1,1 @@
-import Button from './src/Index.vue';
-
-export { Button as YButton};
+export { default as YButton } from './src/Index.vue';
