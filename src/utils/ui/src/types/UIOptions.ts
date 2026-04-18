@@ -1,4 +1,3 @@
-import { createNodes } from "..";
 import type { ClassName } from "../../../../types/ClassName";
 
 export interface UINodes {
@@ -6,7 +5,10 @@ export interface UINodes {
 };
 
 export type UINodesClear<T extends UINodes | undefined = UINodes | undefined> = {
-    [key in keyof T ]?: T[key] extends UINodes ? UINodesClear<T[key]> : ClassName[];
+    [key in keyof T ]?:
+        T[key] extends ClassName[] ? ClassName[] :
+        T[key] extends UINodes | undefined ? UINodesClear<T[key]> :
+        T[key];
 };
 
 export interface UISlots {
@@ -14,7 +16,10 @@ export interface UISlots {
 };
 
 export type UISlotsClear<T extends UISlots | undefined = UISlots | undefined> = {
-    [key in keyof T ]?: T[key] extends UISlots ? UISlotsClear<T[key]> : ClassName[];
+    [key in keyof T ]?:
+        T[key] extends ClassName[] ? ClassName[] :
+        T[key] extends UISlots | undefined ? UISlotsClear<T[key]> :
+        T[key];
 };
 
 export interface UIVariants<
@@ -35,7 +40,7 @@ export type UICombinations<
     S extends UIVariants<T, U> | undefined = UIVariants<T, U> | undefined,
 > = {
     variants?: {
-        [variant in keyof S]?: keyof S[variant] | (keyof S[variant])[];
+        [variant in keyof S]?: (keyof NonNullable<S[variant]> | (keyof NonNullable<S[variant]>)[]);
     },
     nodes?: UINodesClear<T>,
     slots?: UISlotsClear<U>,
@@ -61,56 +66,3 @@ export interface UIOptions {
         >
     >,
 };
-
-const nodes = {
-    root: ['align-items-end', 'size-1'],
-    icon: {
-        append: ['active'],
-        prepend: ['aside-left'],
-    },
-} satisfies UINodes;
-
-const slots = {
-    default: ['border'],
-} satisfies UISlots;
-
-const variants = {
-    size: {
-        xl: {
-            nodes: {
-                root: ['align-items-center'],
-                icon: {
-                    append: ['btn-3xl'],
-                    prepend: ['border-gray'],
-                }
-            },
-            slots: {
-                default: ['border-0'],
-            },
-        },
-    },
-} satisfies UIVariants<typeof nodes, typeof slots>;
-
-const combinations = [
-    {
-        variants: {
-            size: 'xl',
-        },
-        nodes: { root: ['align-items-start', 'bg-default'], icon: {append: ['align-items-center']} },
-        slots: { default: ['align-items-start'] },
-    }
-] satisfies UICombinations<typeof nodes, typeof slots, typeof variants>;
-
-const options = {
-    nodes: nodes,
-    slots: slots,
-    variants: variants,
-    combinations: combinations,
-};
-
-const { root, icon } = createNodes(options.nodes, options.variants);
-
-root({size: 'xl'});
-icon.prepend({size: 'xl'});
-
-// const { nodes, slots } = ui(options.nodes, options.slots, options.variants, options.combinations);

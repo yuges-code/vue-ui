@@ -69,6 +69,10 @@ $spacingLimit: 20;
  */
 @for $i from 0 through $spacingLimit {
     .p-#{$i} {padding: 0.25rem * $i !important;}
+    .p-#{$i}\.25 {padding: (0.25rem * $i) + math.div(0.25, 4) !important;}
+    .p-#{$i}\.5 {padding: (0.25rem * $i) + math.div(0.25, 2) !important;}
+    .p-#{$i}\.75 {padding: (0.25rem * $i) + math.div(0.25, 2) + math.div(0.25, 4) !important;}
+
     .pt-#{$i} {padding-top: 0.25rem * $i !important;}
     .pb-#{$i} {padding-bottom: 0.25rem * $i !important;}
     .pl-#{$i} {padding-left: 0.25rem * $i !important;}

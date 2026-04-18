@@ -37,12 +37,18 @@ export function classes(
 ) {
     const square = isSquare(props, slots);
 
+    ///////
+    if (square) {
+        config
+    }
+    ///////////
+
     return [
-        ...(config.ui.nodes?.root || []),
-        ...(config.ui.variants?.size?.[props.size!]?.root || []),
-        ...(config.ui.variants?.rounded?.[props.rounded!]?.root || []),
-        ...(config.ui.variants?.orientation?.[props.orientation!]?.root || []),
-        ...(config.ui.variants?.square?.[square ? 'true' : 'false']?.root || []),
-        ...(config.ui.variants?.disabled?.[props.disabled ? 'true' : 'false']?.root || []),
+        // ...(config.ui.nodes?.root || []),
+        // ...(config.ui.variants?.size?.[props.size!]?.root || []),
+        // ...(config.ui.variants?.rounded?.[props.rounded!]?.root || []),
+        // ...(config.ui.variants?.orientation?.[props.orientation!]?.root || []),
+        // ...(config.ui.variants?.square?.[square ? 'true' : 'false']?.root || []),
+        // ...(config.ui.variants?.disabled?.[props.disabled ? 'true' : 'false']?.root || []),
     ];
 }

@@ -11,8 +11,6 @@ export function mergeClasslist(...args: string[][]): string[]
         breakpoint: string | undefined;
     }[];
 
-    config
-
     args.forEach((arr) => {
         arr.forEach((classname) => {
             const parsed = parse(classname);

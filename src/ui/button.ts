@@ -1,98 +1,164 @@
-import { ClassName } from "../types/ClassName";
 import type { ButtonUI } from "../components/Button/src/types/ButtonUI";
 
-const buttonUI = {
-    nodes: {
-        root: ['d-inline-flex', 'position-relative', 'gap-1'],
-        icon: {
-            append: [ClassName["d-inline-flex"]],
-            prepend: [ClassName["d-inline-flex"]],
+
+const nodes = {
+    root: ['d-inline-flex', 'position-relative', 'gap-1'],
+    icon: {
+        append: ['d-inline-flex'],
+        prepend: ['d-inline-flex'],
+    },
+} satisfies ButtonUI['nodes'];
+
+const slots = {} satisfies ButtonUI['slots'];
+
+const variants = {
+    disabled: {
+        true: {
+            nodes: {
+                root: ['disabled'],
+            },
+        },
+        false: {
+            nodes: {
+                root: [],
+            },
         }
     },
-    variants: {
-        disabled: {
-            true: {
-                root: [ClassName['disabled']],
-            },
-            false: {
-                root: [],
-            }
-        },
-        orientation: {
-            vertical: {
-                root: [ClassName['flex-column'], ClassName['align-items-center']],
-            },
-            horizontal: {
-                root: [ClassName['flex-row']],
+    orientation: {
+        vertical: {
+            nodes: {
+                root: ['flex-column', 'align-items-center'],
             },
         },
-        square: {
-            true: {
-                root: [ClassName['btn-icon']],
+        horizontal: {
+            nodes: {
+                root: ['flex-row'],
             },
-            false: {
+        },
+    },
+    square: {
+        true: {
+            nodes: {
+                root: ['btn-icon'],
+            },
+        },
+        false: {
+            nodes: {
                 root: [],
             },
         },
-        rounded: {
-            md: {
-                root: [ClassName['rounded-md']],
+    },
+    rounded: {
+        md: {
+            nodes: {
+                root: ['rounded-md'],
+                icon: {},
             },
         },
-        size: {
-            '4xs': {
+    },
+    size: {
+        '4xs': {
+            nodes: {
                 root: ['text-5xs', 'px-1.25', 'py-0.5'],
                 icon: { append: ['size-3'], prepend: ['size-3'] },
             },
-            '3xs': {
+        },
+        '3xs': {
+            nodes: {
                 root: ['text-4xs', 'px-1.5', 'py-0.75'],
                 icon: { append: ['size-3.5'], prepend: ['size-3.5'] },
             },
-            '2xs': {
+        },
+        '2xs': {
+            nodes: {
                 root: ['text-3xs', 'px-1.75', 'py-1'],
                 icon: { append: ['size-4'], prepend: ['size-4'] },
             },
-            xs: {
+        },
+        xs: {
+            nodes: {
                 root: ['text-2xs', 'px-2', 'py-1.25'],
                 icon: { append: ['size-4.5'], prepend: ['size-4.5'] },
             },
-            sm: {
+        },
+        sm: {
+            nodes: {
                 root: ['text-xs', 'px-2.25', 'py-1.5'],
                 icon: { append: ['size-5'], prepend: ['size-5'] },
             },
-            md: {
+        },
+        md: {
+            nodes: {
                 root: ['text-sm', 'px-2.5', 'py-1.75'],
                 icon: { append: ['size-5.5'], prepend: ['size-5.5'] },
             },
-            lg: {
+        },
+        lg: {
+            nodes: {
                 root: ['text-md', 'px-2.75', 'py-2'],
                 icon: { append: ['size-6'], prepend: ['size-6'] },
             },
-            xl: {
+        },
+        xl: {
+            nodes: {
                 root: ['text-lg', 'px-3', 'py-2.25'],
                 icon: { append: ['size-6.5'], prepend: ['size-6.5'] },
             },
-            '2xl': {
+        },
+        '2xl': {
+            nodes: {
                 root: ['text-xl', 'px-3.25', 'py-2.5'],
                 icon: { append: ['size-7'], prepend: ['size-7'] },
             },
-            '3xl': {
+        },
+        '3xl': {
+            nodes: {
                 root: ['text-2xl', 'px-3.5', 'py-2.75'],
                 icon: { append: ['size-7.5'], prepend: ['size-7.5'] },
             },
-            '4xl': {
+        },
+        '4xl': {
+            nodes: {
                 root: ['text-3xl', 'px-3.75', 'py-3'],
                 icon: { append: ['size-8'], prepend: ['size-8'] },
-                square: { true: { root: ['p-3'] }, false: { root: ['px-3.75', 'py-3'] } },
             },
         },
     },
-    // combinations: [
-    //     {
-    //         variants: { size: 'md', square: 'true' },
-    //         nodes: { root: [''] }
-    //     },
-    // ],
+} satisfies ButtonUI['variants'];
+
+const combinations = [
+    {
+        variants: { size: '4xs', square: 'true' }, nodes: { root: ['p-0.5'] },
+    }, {
+        variants: { size: '3xs', square: 'true' }, nodes: { root: ['p-0.75'] },
+    }, {
+        variants: { size: '2xs', square: 'true' }, nodes: { root: ['p-1'] },
+    }, {
+        variants: { size: 'xs', square: 'true' }, nodes: { root: ['p-1.25'] },
+    }, {
+        variants: { size: 'xs', square: 'true' }, nodes: { root: ['p-1.25'] },
+    }, {
+        variants: { size: 'sm', square: 'true' }, nodes: { root: ['p-1.5'] },
+    }, {
+        variants: { size: 'md', square: 'true' }, nodes: { root: ['p-1.75'] },
+    }, {
+        variants: { size: 'lg', square: 'true' }, nodes: { root: ['p-2'] },
+    }, {
+        variants: { size: 'xl', square: 'true' }, nodes: { root: ['p-2.25'] },
+    }, {
+        variants: { size: '2xl', square: 'true' }, nodes: { root: ['p-2.5'] },
+    }, {
+        variants: { size: '3xl', square: 'true' }, nodes: { root: ['p-2.75'] },
+    }, {
+        variants: { size: '4xl', square: 'true' }, nodes: { root: ['p-3'] },
+    },
+] satisfies ButtonUI['combinations'];
+
+const buttonUI = {
+    nodes: nodes,
+    slots: slots,
+    variants: variants,
+    combinations: combinations,
 } satisfies ButtonUI;
 
 export default buttonUI;
